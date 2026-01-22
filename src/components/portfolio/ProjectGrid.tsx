@@ -17,12 +17,9 @@ export const ProjectGrid = ({ onProjectClick }: ProjectGridProps) => {
         transition={{ duration: 0.6 }}
         className="mb-16"
       >
-        <span className="font-mono text-xs tracking-widest uppercase text-accent mb-4 block">
-          Portfolio
-        </span>
-        <h2 className="font-serif text-4xl lg:text-5xl text-foreground">
-          Selected Works
-        </h2>
+          <h2 className="font-serif text-4xl lg:text-5xl text-foreground">
+            Projects
+          </h2>
       </motion.div>
 
       {/* Grid */}

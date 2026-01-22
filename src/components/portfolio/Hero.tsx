@@ -12,20 +12,7 @@ export const Hero = () => {
       </div>
 
       <div className="max-w-5xl mx-auto text-center relative z-10">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full border border-accent/50 bg-accent/10"
-        >
-          <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-          <span className="text-xs font-medium tracking-widest uppercase text-foreground/80">
-            Available for opportunities
-          </span>
-        </motion.div>
-
-        {/* Name */}
+      {/* Name */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
