@@ -93,7 +93,7 @@ export const EDUCATION = [
   {
     school: "University of Michigan",
     degree: "B.S. Mechanical Engineering",
-    details: ["GPA: 3.94 / 4.00", "Graduation: May 2026"]
+    details: ["GPA: 3.94 / 4.00", "Graduated in 3 Years (Aug 2023 - May 2026)"]
   }
 ];
 
