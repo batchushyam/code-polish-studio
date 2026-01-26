@@ -68,13 +68,13 @@ export const PROJECTS = [
 export const EXPERIENCE = [
   {
     company: "University of Michigan",
-    role: "Lead Instructional Aide - Dynamics",
+    role: "Lead Instructional Aide - Dynamics and Vibrations",
     period: "Aug 2025 - Present",
     location: "Ann Arbor, MI",
     desc: "Creating homework solutions and delivering course content to support 100+ students in Dynamics and Vibrations. Leading problem-solving sessions to enhance student learning."
   },
   {
-    company: "Boston Scientific",
+    company: "Boston Scientific Company",
     role: "Manufacturing Engineering Intern",
     period: "May 2025 - Aug 2025",
     location: "Maple Grove, MN",
@@ -93,7 +93,7 @@ export const EDUCATION = [
   {
     school: "University of Michigan",
     degree: "B.S. Mechanical Engineering",
-    details: ["GPA: 3.94 / 4.00", "Aug 2023 - May 2026"]
+    details: ["GPA: 3.95 / 4.00", "Aug 2023 - May 2026"]
   }
 ];
 
