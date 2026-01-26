@@ -21,13 +21,13 @@ export const Navigation = ({ onScrollTo }: NavigationProps) => {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          {["Work", "Experience", "Contact"].map((item, i) => (
+          {["About", "Projects", "Experience"].map((item, i) => (
             <motion.button
               key={item}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * i + 0.3 }}
-              onClick={() => onScrollTo(item.toLowerCase())}
+              onClick={() => onScrollTo(item.toLowerCase() === "projects" ? "work" : item.toLowerCase())}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300 relative group"
             >
               {item}
@@ -64,11 +64,11 @@ export const Navigation = ({ onScrollTo }: NavigationProps) => {
           className="md:hidden bg-background border-t border-border"
         >
           <div className="px-6 py-4 space-y-3">
-            {["Work", "Experience", "Contact"].map((item) => (
+            {["About", "Projects", "Experience"].map((item) => (
               <button
                 key={item}
                 onClick={() => {
-                  onScrollTo(item.toLowerCase());
+                  onScrollTo(item.toLowerCase() === "projects" ? "work" : item.toLowerCase());
                   setMobileOpen(false);
                 }}
                 className="block w-full text-left py-2 text-foreground font-medium"
@@ -76,6 +76,13 @@ export const Navigation = ({ onScrollTo }: NavigationProps) => {
                 {item}
               </button>
             ))}
+            <a
+              href="/Shyam_Batchu_Resume.pdf"
+              target="_blank"
+              className="block w-full text-left py-2 text-foreground font-medium"
+            >
+              Resume
+            </a>
           </div>
         </motion.div>
       )}
