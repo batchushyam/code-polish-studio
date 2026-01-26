@@ -17,12 +17,7 @@ export const Navigation = ({ onScrollTo }: NavigationProps) => {
       className="fixed top-0 w-full z-50 glass"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="font-serif text-2xl font-semibold text-foreground tracking-tight"
-        >
-          BATCHU<span className="text-accent">.</span>
-        </button>
+        <div className="w-8" /> {/* Spacer for layout balance */}
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
