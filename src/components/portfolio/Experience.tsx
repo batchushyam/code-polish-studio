@@ -12,7 +12,7 @@ export const Experience = () => {
         transition={{ duration: 0.6 }}
         className="mb-16"
       >
-        <h2 className="font-serif text-2xl text-foreground mb-6">education</h2>
+        <h2 className="font-serif text-2xl text-foreground mb-6">Education</h2>
         {EDUCATION.map((edu, i) => (
           <div key={i} className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center flex-shrink-0">
@@ -24,6 +24,9 @@ export const Experience = () => {
               </h3>
               <p className="text-muted-foreground text-sm">
                 {edu.details.join(", ")}
+              </p>
+              <p className="text-muted-foreground text-sm mt-1">
+                Dean's List and University Honors every semester
               </p>
             </div>
           </div>
@@ -37,7 +40,7 @@ export const Experience = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="font-serif text-2xl text-foreground mb-6">my experiences</h2>
+        <h2 className="font-serif text-2xl text-foreground mb-6">Experience</h2>
         <div className="space-y-8">
           {EXPERIENCE.map((job, i) => (
             <motion.div
@@ -57,6 +60,9 @@ export const Experience = () => {
                 <h3 className="font-serif text-lg text-foreground">
                   {job.company} <span className="text-muted-foreground font-sans text-sm">• {job.role}</span>
                 </h3>
+                <p className="text-muted-foreground text-xs text-accent mb-1">
+                  {job.period}
+                </p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   {job.desc}
                 </p>
