@@ -68,9 +68,13 @@ export const Experience = () => {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="flex items-start gap-4"
               >
-                <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center flex-shrink-0 overflow-hidden border border-border">
+                <div className={`w-12 h-12 rounded-lg bg-white flex items-center justify-center flex-shrink-0 overflow-hidden border border-border ${job.company === "Boston Scientific Company" ? "" : ""}`}>
                   {logo ? (
-                    <img src={logo} alt={job.company} className="w-full h-full object-contain p-1" />
+                    <img 
+                      src={logo} 
+                      alt={job.company} 
+                      className={`${job.company === "Boston Scientific Company" ? "w-full h-full object-cover scale-125" : "w-full h-full object-contain p-1"}`}
+                    />
                   ) : (
                     <span className="text-accent font-serif text-lg">
                       {job.company.charAt(0)}
