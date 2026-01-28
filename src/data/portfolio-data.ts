@@ -25,11 +25,11 @@ export const PROJECTS = [
   },
   {
     id: 2,
-    title: "M-Fly Autonomous Aircraft",
-    category: "Aerospace",
+    title: "Computational Simulations of Multibody Systems",
+    category: "Modeling",
     image: "https://images.unsplash.com/photo-1559627798-22eeb9a27e8d?q=80&w=2670&auto=format&fit=crop",
-    year: "2024-2025",
-    role: "Structures Engineer",
+    year: "January 2025 - May 2025",
+    role: "Individual Projects",
     bullets: [
       "Designed a completely redesigned autonomous aircraft using Siemens NX to meet size constraints and maximize speed for Student Unmanned Aerial Systems competition.",
       "Mentored students through individualized guidance and tutorials to enhance CAD skills and promote team collaboration."
@@ -41,7 +41,7 @@ export const PROJECTS = [
     title: "Remote Controlled Robot",
     category: "Robotics",
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2670&auto=format&fit=crop",
-    year: "Fall 2024",
+    year: "August 2024 - December 2024",
     role: "Team Lead",
     bullets: [
       "Managed planning, designing, and manufacturing of a 10\" x 11\" x 11\" RC robot capable of completing multiple tasks within a 16-week timeline.",
@@ -51,11 +51,39 @@ export const PROJECTS = [
   },
   {
     id: 4,
-    title: "ISS Filtration System",
+    title: "4-Bar Linkage",
     category: "Space Systems",
     image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2672&auto=format&fit=crop",
-    year: "2023-2024",
+    year: "January 2025 - May 2025",
     role: "Surfaces Team Member",
+    bullets: [
+      "Contracted by NASA to develop a filtration system for the ISS; modeled components using SolidWorks.",
+      "Met NASA constraints on air flow using geometric properties and Ansys FEA analysis.",
+      "Produced trade studies and morphological charts to guide decisions on key design choices and materials."
+    ],
+    tech: ["Ansys FEA", "SolidWorks", "NASA Standards", "Morphological Charts"]
+  },
+  {
+    id: 5,
+    title: "Boston Scientific Internship",
+    category: "Space Systems",
+    image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2672&auto=format&fit=crop",
+    year: "May 2025 - August 2025",
+    role: "Manufacturing Engineering Intern + 1 R&D Project",
+    bullets: [
+      "Contracted by NASA to develop a filtration system for the ISS; modeled components using SolidWorks.",
+      "Met NASA constraints on air flow using geometric properties and Ansys FEA analysis.",
+      "Produced trade studies and morphological charts to guide decisions on key design choices and materials."
+    ],
+    tech: ["Ansys FEA", "SolidWorks", "NASA Standards", "Morphological Charts"]
+  },
+  {
+    id: 6,
+    title: "Naval Engineering Education Consortium",
+    category: "Space Systems",
+    image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2672&auto=format&fit=crop",
+    year: "February 2024 - August 2025",
+    role: "Undergraduate Researcher",
     bullets: [
       "Contracted by NASA to develop a filtration system for the ISS; modeled components using SolidWorks.",
       "Met NASA constraints on air flow using geometric properties and Ansys FEA analysis.",
@@ -71,7 +99,7 @@ export const EXPERIENCE = [
     role: "Lead Instructional Aide - Dynamics and Vibrations",
     period: "Aug 2025 - Present",
     location: "Ann Arbor, MI",
-    desc: "Creating homework solutions and delivering course content to support 100+ students in Dynamics and Vibrations. Leading problem-solving sessions to enhance student learning."
+    desc: "Creating homework solutions and delivering course content to support 100+ students in Dynamics and Vibrations. Leading problem-solving sessions to enhance student learning. Weekly time commitment of 10 hours."
   },
   {
     company: "Boston Scientific Company",
