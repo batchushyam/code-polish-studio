@@ -32,7 +32,7 @@ export const Hero = () => {
               transition={{ duration: 0.6 }}
               className="text-base sm:text-lg text-muted-foreground font-light leading-relaxed"
             >
-              Hi, I'm Shyam. Welcome to my portfolio! I am a senior at the University of Michigan studying echanical ngineering with a concentration in robotics. I am especially interested in exploring the fields of robotics and design, and interested in finding roles where I can create things that intrigue me and benefit others. Currently I'm working on building a low-cost medical device with Team Flow. When I'm not working on engineering stuff you can find me playing tennis, hiking, and spending too much time stressing about board games with friends. 
+              Hi, I'm Shyam. Welcome to my portfolio! I am a senior at the University of Michigan studying mechanical ngineering with a concentration in robotics. I am especially interested in exploring the fields of robotics and design, and interested in finding roles where I can create things that intrigue me and benefit others. Currently I'm working on building a low-cost medical device with Team Flow. When I'm not working on engineering stuff you can find me playing tennis, hiking, and spending too much time stressing about board games with friends. 
             </motion.p>
           </div>
         </div>
