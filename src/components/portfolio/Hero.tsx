@@ -19,7 +19,7 @@ export const Hero = () => {
             transition={{ duration: 0.8 }}
             className="flex justify-center md:justify-end order-1 md:order-2"
           >
-            <div className="w-56 h-56 sm:w-72 sm:h-72 rounded-2xl bg-muted/50 border border-border overflow-hidden">
+            <div className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-2xl bg-muted/50 border border-border overflow-hidden">
               <img 
                 src={profilePhoto} 
                 alt="Shyam Batchu"
