@@ -38,7 +38,7 @@ export const Hero = () => {
               className="space-y-4"
             >
               <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                Hi, I'm Shyam Batchu. Welcome to my portfolio! I am a senior at the University of Michigan studying Mechanical Engineering with a concentration in Robotics. I'm passionate about utilizing technology to create things that intrigue me and benefit others, specifically within the fields of robotics, design, and medical devices.
+                Hi, I'm Shyam Batchu. Welcome to my portfolio! I am a senior at the University of Michigan studying Mechanical Engineering with a concentration in Robotics. I want to utilize technology to create things that intrigue me and benefit others. I'm especially interested in exploring the fields of robotics, design, and medical devices.
               </p>
               <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mt-4">
                 When I'm not working on engineering stuff, you can find me playing tennis, hiking, or spending way too much time stressing over board games with friends.
