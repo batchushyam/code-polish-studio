@@ -94,7 +94,7 @@ export const EDUCATION = [
     school: "University of Michigan",
     degree: "B.S. Mechanical Engineering",
     details: ["GPA: 3.95 / 4.00", "Aug 2023 - May 2026"],
-    coursework: ["Dynamics & Vibrations", "Thermodynamics", "Fluid Mechanics", "Mechatronics", "Machine Design", "Control Systems", "CAD/CAM"]
+    coursework: ["Analytical and Computational Dynamics","Vehicle Control Systems","Automatic Control", "Front-End Design"]
   }
 ];
 

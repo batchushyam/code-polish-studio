@@ -32,7 +32,7 @@ export const Experience = () => {
               <h3 className="font-serif text-lg text-foreground">
                 {edu.school} <span className="text-muted-foreground font-sans text-sm">• {edu.degree}</span>
               </h3>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-black font-small text-sm">
                 {edu.details.join(", ")}
               </p>
               <p className="text-muted-foreground text-sm mt-1">
@@ -40,7 +40,7 @@ export const Experience = () => {
               </p>
               {edu.coursework && (
                 <p className="text-muted-foreground text-sm mt-1">
-                  <span className="text-foreground">Relevant Coursework:</span> {edu.coursework.join(", ")}
+                  <span className="text-foreground">Graduate Level Coursework:</span> {edu.coursework.join(", ")}
                 </p>
               )}
             </div>

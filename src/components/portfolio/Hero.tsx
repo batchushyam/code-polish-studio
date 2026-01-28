@@ -37,11 +37,14 @@ export const Hero = () => {
               transition={{ duration: 0.6 }}
               className="space-y-4"
             >
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                Hi, I'm Shyam Batchu. Welcome to my portfolio! I am a senior at the University of Michigan studying Mechanical Engineering with a concentration in Robotics. I want to utilize technology to create things that intrigue me and benefit others. I'm especially interested in exploring the fields of robotics, design, and medical devices.
+              <p className="text-lg md:text-[22px] font-medium text-black leading-relaxed">
+                Welcome to my portfolio! My name is Shyam Batchu and I am a senior at the University of Michigan studying Mechanical Engineering with a concentration in Robotics. 
+              <p className="text-lg md:text-[22px] font-medium text-black leading-relaxed mt-4">
+                I want to utilize technology to create things that intrigue me and benefit others. I'm especially interested in exploring the fields of robotics, design, and medical devices.
               </p>
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mt-4">
-                When I'm not working on engineering stuff, you can find me playing tennis, hiking, or spending way too much time stressing over board games with friends.
+              </p>
+              <p className="text-lg md:text-[22px] font-medium text-black leading-relaxed mt-4">
+                When I'm not working on engineering stuff you can find me playing tennis, hiking, or spending way too much time stressing over board games with friends.
               </p>
             </motion.div>
           </div>
