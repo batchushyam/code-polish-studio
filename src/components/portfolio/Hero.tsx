@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import profilePhoto from "@/assets/profile-photo.jpeg";
 
 export const Hero = () => {
   return (
@@ -11,29 +12,41 @@ export const Hero = () => {
 
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          {/* Profile Image Placeholder */}
+          {/* Profile Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             className="flex justify-center md:justify-end order-1 md:order-2"
           >
-            <div className="w-48 h-48 sm:w-64 sm:h-64 rounded-2xl bg-muted/50 border border-border flex items-center justify-center overflow-hidden">
-              <span className="text-muted-foreground text-sm font-mono">Your Photo Here</span>
+            <div className="w-48 h-48 sm:w-64 sm:h-64 rounded-2xl bg-muted/50 border border-border overflow-hidden">
+              <img 
+                src={profilePhoto} 
+                alt="Shyam Batchu"
+                className="w-full h-full object-cover object-top"
+              />
             </div>
           </motion.div>
 
           {/* Text Content */}
           <div className="text-center md:text-left order-2 md:order-1">
             {/* Bio */}
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-base sm:text-lg text-muted-foreground font-light leading-relaxed"
+              className="space-y-4"
             >
-              Hi, I'm Shyam. Welcome to my portfolio! I am a senior at the University of Michigan studying mechanical engineering with a concentration in robotics. I want to utilize technology to create things that intrigue me and benefit others.  I am especially interested in exploring the fields of robotics, design, and medical devices. When I'm not working on engineering stuff you can find me playing tennis, hiking, and spending too much time stressing about board games with friends. 
-            </motion.p>
+              <p className="text-lg sm:text-xl text-foreground font-medium">
+                Hi, I'm Shyam 👋
+              </p>
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                I'm a senior at the University of Michigan studying mechanical engineering with a concentration in robotics. I'm passionate about utilizing technology to create things that intrigue me and benefit others.
+              </p>
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                I'm especially interested in exploring the fields of <span className="text-foreground font-medium">robotics</span>, <span className="text-foreground font-medium">design</span>, and <span className="text-foreground font-medium">medical devices</span>. When I'm not working on engineering projects, you can find me playing tennis, hiking, and spending too much time stressing about board games with friends.
+              </p>
+            </motion.div>
           </div>
         </div>
       </div>

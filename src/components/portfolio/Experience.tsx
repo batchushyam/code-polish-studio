@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { EXPERIENCE, EDUCATION } from "@/data/portfolio-data";
+import umichLogo from "@/assets/logos/umich-logo.png";
 
 export const Experience = () => {
   return (
@@ -15,8 +16,8 @@ export const Experience = () => {
         <h2 className="font-serif text-2xl text-foreground mb-6">Education</h2>
         {EDUCATION.map((edu, i) => (
           <div key={i} className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center flex-shrink-0">
-              <span className="text-accent font-serif text-lg">M</span>
+            <div className="w-12 h-12 rounded-lg bg-[#00274C] flex items-center justify-center flex-shrink-0 overflow-hidden">
+              <img src={umichLogo} alt="University of Michigan" className="w-full h-full object-cover" />
             </div>
             <div>
               <h3 className="font-serif text-lg text-foreground">
@@ -28,6 +29,11 @@ export const Experience = () => {
               <p className="text-muted-foreground text-sm mt-1">
                 Dean's List and University Honors every semester
               </p>
+              {edu.coursework && (
+                <p className="text-muted-foreground text-sm mt-1">
+                  <span className="text-foreground">Relevant Coursework:</span> {edu.coursework.join(", ")}
+                </p>
+              )}
             </div>
           </div>
         ))}

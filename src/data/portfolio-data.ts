@@ -93,7 +93,8 @@ export const EDUCATION = [
   {
     school: "University of Michigan",
     degree: "B.S. Mechanical Engineering",
-    details: ["GPA: 3.95 / 4.00", "Aug 2023 - May 2026"]
+    details: ["GPA: 3.95 / 4.00", "Aug 2023 - May 2026"],
+    coursework: ["Dynamics & Vibrations", "Thermodynamics", "Fluid Mechanics", "Mechatronics", "Machine Design", "Control Systems", "CAD/CAM"]
   }
 ];
 
