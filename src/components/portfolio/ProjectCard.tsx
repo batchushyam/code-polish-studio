@@ -57,6 +57,9 @@ export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
           </span>
         </div>
         <p className="text-sm text-muted-foreground">{project.role}</p>
+        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+          {project.summary}
+        </p>
       </div>
     </motion.article>
   );
