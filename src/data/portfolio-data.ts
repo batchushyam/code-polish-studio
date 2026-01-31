@@ -79,7 +79,7 @@ export const PROJECTS: Project[] = [
     image: "https://images.unsplash.com/photo-1559627798-22eeb9a27e8d?q=80&w=2670&auto=format&fit=crop",
     year: "January 2025 - May 2025",
     role: "Individual Projects",
-    summary: "Designed a completely redesigned autonomous aircraft using Siemens NX to meet size constraints and maximize speed.",
+    summary: "Created dynamics engine in MATLAB in order to model multibody systems.",
     tech: ["Siemens NX", "Aerodynamics", "Composites", "UAV"],
     sections: [
       {
