@@ -40,7 +40,7 @@ export const PROJECTS: Project[] = [
     id: 1,
     title: "Autonomous IV Monitor",
     category: "Medical Device",
-    image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=2670&auto=format&fit=crop",
+    image: "/src/assets/projects/iv-monitor.jpeg",
     year: "September 2024-Present",
     role: "Engineering Lead",
     summary: "Leading a 10-member engineering team creating a low-cost, autonomous IV drip monitoring device to improve patient outcomes in under-resourced hospitals.",
