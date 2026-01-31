@@ -16,7 +16,8 @@ export type ContentBlock =
   | { type: "image"; src: string; alt: string; caption?: string }
   | { type: "gallery"; images: { src: string; alt: string; caption?: string }[] }
   | { type: "quote"; text: string; attribution?: string }
-  | { type: "callout"; title: string; text: string };
+  | { type: "callout"; title: string; text: string }
+  | { type: "videoComparison"; title: string; realVideo: string; modelVideo: string; description?: string };
 
 export interface ProjectSection {
   title: string;
@@ -80,16 +81,24 @@ export const PROJECTS: Project[] = [
     year: "January 2025 - May 2025",
     role: "Individual Projects",
     summary: "Created dynamics engine in MATLAB in order to model multibody systems.",
-    tech: ["Siemens NX", "Aerodynamics", "Composites", "UAV"],
+    tech: ["MATLAB", "Dynamics", "Simulation", "Numerical Methods"],
     sections: [
       {
         title: "Overview",
         content: [
-          { type: "paragraph", text: "This course focused on computational methods for analyzing and simulating complex mechanical systems with multiple interconnected bodies." },
-          { type: "bullets", items: [
-            "Designed a completely redesigned autonomous aircraft using Siemens NX to meet size constraints and maximize speed for Student Unmanned Aerial Systems competition.",
-            "Mentored students through individualized guidance and tutorials to enhance CAD skills and promote team collaboration."
-          ]}
+          { type: "paragraph", text: "This course focused on computational methods for analyzing and simulating complex mechanical systems with multiple interconnected bodies. I built a dynamics engine in MATLAB to model real-world phenomena." }
+        ]
+      },
+      {
+        title: "Models",
+        content: [
+          { 
+            type: "videoComparison", 
+            title: "Medieval Trebuchet", 
+            realVideo: "/src/assets/projects/trebuchet-real.mp4", 
+            modelVideo: "/src/assets/projects/trebuchet-model.mp4",
+            description: "Add your explanation of how you modeled the trebuchet here."
+          }
         ]
       }
     ]
