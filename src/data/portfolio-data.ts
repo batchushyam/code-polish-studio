@@ -17,7 +17,8 @@ export type ContentBlock =
   | { type: "gallery"; images: { src: string; alt: string; caption?: string }[] }
   | { type: "quote"; text: string; attribution?: string }
   | { type: "callout"; title: string; text: string }
-  | { type: "videoComparison"; title: string; realVideo: string; modelVideo: string; description?: string };
+  | { type: "videoComparison"; title: string; realVideo: string; modelVideo: string; description?: string }
+  | { type: "mediaShowcase"; title: string; items: { label: string; src: string; mediaType: "image" | "video" }[]; description?: string };
 
 export interface ProjectSection {
   title: string;
@@ -98,6 +99,37 @@ export const PROJECTS: Project[] = [
             realVideo: "/src/assets/projects/trebuchet-real.mp4", 
             modelVideo: "/src/assets/projects/trebuchet-model.mp4",
             description: "Add your explanation of how you modeled the trebuchet here."
+          },
+          { 
+            type: "mediaShowcase", 
+            title: "Bipedal Robot", 
+            items: [
+              { label: "Walking Gait", src: "/src/assets/projects/biped-walking.mp4", mediaType: "video" },
+              { label: "Running Gait", src: "/src/assets/projects/biped-running.mp4", mediaType: "video" }
+            ],
+            description: "Add your explanation of how you modeled the bipedal robot gaits here."
+          },
+          { 
+            type: "mediaShowcase", 
+            title: "Hopping Robot", 
+            items: [
+              { label: "Model Diagram", src: "/src/assets/projects/hopping-robot-diagram.png", mediaType: "image" },
+              { label: "Aligned Drop", src: "/src/assets/projects/hopping-aligned.mp4", mediaType: "video" },
+              { label: "Crooked Drop", src: "/src/assets/projects/hopping-crooked.mp4", mediaType: "video" },
+              { label: "Generalized Coordinates", src: "/src/assets/projects/hopping-coordinates.png", mediaType: "image" }
+            ],
+            description: "Add your explanation of how you modeled the hopping robot here."
+          },
+          { 
+            type: "mediaShowcase", 
+            title: "Teacup Ride", 
+            items: [
+              { label: "Real World", src: "/src/assets/projects/teacup-real.mp4", mediaType: "video" },
+              { label: "Model", src: "/src/assets/projects/teacup-model.mp4", mediaType: "video" },
+              { label: "Position of Rider", src: "/src/assets/projects/teacup-position.png", mediaType: "image" },
+              { label: "Acceleration of Rider", src: "/src/assets/projects/teacup-acceleration.png", mediaType: "image" }
+            ],
+            description: "Add your explanation of how you modeled the teacup ride here."
           }
         ]
       }
