@@ -160,6 +160,42 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
           )}
         </motion.div>
       );
+
+    case "mediaShowcase":
+      return (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 * index }}
+          className="my-6 p-4 bg-muted/30 rounded-xl border border-border/50"
+        >
+          <h5 className="font-serif text-lg text-foreground mb-4">{block.title}</h5>
+          <div className={`grid grid-cols-1 ${block.items.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-2 lg:grid-cols-4'} gap-4 mb-4`}>
+            {block.items.map((item, idx) => (
+              <div key={idx}>
+                <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2 block">{item.label}</span>
+                {item.mediaType === "video" ? (
+                  <video
+                    src={item.src}
+                    controls
+                    className="w-full rounded-lg shadow-md aspect-video object-cover"
+                    playsInline
+                  />
+                ) : (
+                  <img
+                    src={item.src}
+                    alt={item.label}
+                    className="w-full rounded-lg shadow-md aspect-video object-contain bg-white"
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+          {block.description && (
+            <p className="text-sm text-muted-foreground leading-relaxed">{block.description}</p>
+          )}
+        </motion.div>
+      );
     
     default:
       return null;
