@@ -255,7 +255,7 @@ export const EXPERIENCE = [
     desc: "Creating homework solutions and delivering course content to support 100+ students in Dynamics and Vibrations. Leading problem-solving sessions to enhance student learning. Weekly time commitment of 10 hours."
   },
   {
-    company: "Boston Scientific Company",
+    company: "Boston Scientific",
     role: "Manufacturing Engineering Intern",
     period: "May 2025 - Aug 2025",
     location: "Maple Grove, MN",
