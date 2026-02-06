@@ -157,20 +157,48 @@ export const PROJECTS: Project[] = [
     id: 3,
     title: "Remote Controlled Robot",
     category: "Robotics",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2670&auto=format&fit=crop",
+    image: "/projects/rc-robot-full.jpg",
     year: "August 2024 - December 2024",
     role: "Team Lead",
-    summary: "Managed planning, designing, and manufacturing of a 10\" x 11\" x 11\" RC robot capable of completing multiple tasks.",
-    tech: ["SolidWorks", "GD&T", "Machining", "Project Management"],
+    summary: "Designed and manufactured a 40+ part remote-controlled robot to pick up a flag and drop it into a mug, earning maximum points in the end-of-semester competition.",
+    tech: ["SolidWorks", "GD&T", "3D Printing", "Waterjetting", "Machining"],
     sections: [
       {
-        title: "Project Overview",
+        title: "Goal",
         content: [
-          { type: "paragraph", text: "As team lead, I managed the complete lifecycle of designing and manufacturing a remote-controlled robot within a 16-week timeline." },
+          { type: "paragraph", text: "Create a remote-controlled robot capable of picking up a flag and dropping it into a mug. The robot was designed to complete three functional requirements with a focus on maximizing points in the end-of-semester competition." }
+        ]
+      },
+      {
+        title: "What?",
+        content: [
+          { type: "paragraph", text: "Designed and manufactured a 40+ part robot to complete three functional requirements with a focus on maximizing points in the end-of-semester competition." },
+          { type: "image", src: "/projects/rc-robot-cad.png", alt: "CAD model of the remote controlled robot", caption: "SolidWorks CAD model of the robot design" }
+        ]
+      },
+      {
+        title: "How?",
+        content: [
           { type: "bullets", items: [
-            "Managed planning, designing, and manufacturing of a 10\" x 11\" x 11\" RC robot capable of completing multiple tasks within a 16-week timeline.",
-            "Designed a 60+ part robot using SolidWorks, applying GD&T to create parts that are manufacturable."
-          ]}
+            "Produced 3D CAD Models and detailed engineering drawings for assembly using SolidWorks",
+            "Utilized 3D Printing, Waterjetting, and Conventional Machining in order to manufacture the robot"
+          ]},
+          { 
+            type: "mediaShowcase", 
+            title: "Robot Build", 
+            items: [
+              { label: "Full Robot View", src: "/projects/rc-robot-full.jpg", mediaType: "image" },
+              { label: "Clamp Open", src: "/projects/rc-robot-clamp-open.jpg", mediaType: "image" },
+              { label: "Clamp Closed", src: "/projects/rc-robot-clamp-closed.jpg", mediaType: "image" }
+            ],
+            description: "The robot features a custom-designed clamp mechanism for reliably grasping and releasing the flag."
+          }
+        ]
+      },
+      {
+        title: "Results",
+        content: [
+          { type: "callout", title: "Competition Success", text: "The robot demonstrated exceptional reliability, earning maximum points in the end-of-semester competition." }
         ]
       }
     ]
