@@ -83,6 +83,12 @@ export const PROJECTS: Project[] = [
           ]}
          
         ]
+      },
+      {
+        title: "Post-Travel",
+        content: [
+          { type: "paragraph", text: " I am now currently working on designing a ring that works on drip chambers of different sizes and creating a system to control the flow rate of infusion pumps. This section will be updated as progress is made." },          
+        ]
       }
     ]
   },
