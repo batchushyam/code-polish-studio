@@ -96,7 +96,7 @@ export const PROJECTS: Project[] = [
     id: 2,
     title: "Computational Simulations of Multibody Systems",
     category: "Modeling",
-    image: "https://images.unsplash.com/photo-1559627798-22eeb9a27e8d?q=80&w=2670&auto=format&fit=crop",
+    image: "/projects/multibody-systems.png",
     year: "January 2025 - May 2025",
     role: "Individual Projects",
     summary: "Created dynamics engine in MATLAB in order to model multibody systems.",
