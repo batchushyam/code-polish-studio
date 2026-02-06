@@ -45,20 +45,24 @@ export const PROJECTS: Project[] = [
     image: "/src/assets/projects/iv-monitor.jpeg",
     year: "September 2024-Present",
     role: "Engineering Lead",
-    summary: "Leading a 10-member engineering team creating a low-cost, autonomous IV drip monitoring device to improve patient outcomes in under-resourced hospitals.",
+    summary: "Leading a 10-member engineering team creating a low-cost, autonomous IV drip monitoring device to improve patient outcomes in under-resourced hospitals. Traveled to Komfo Anokye Teaching Hospital (KATH) in Kumasi, Ghana to test out the device and get feedback.",
     tech: ["SolidWorks", "3D Printing", "Circuit Design", "Medical Device"],
     sections: [
       {
         title: "The Problem",
         content: [
-          { type: "paragraph", text: "In under-resourced hospitals, particularly in developing countries like Ghana, IV drip monitoring is often done manually by overworked nursing staff. This leads to delayed responses when IV bags run empty, causing patient discomfort and potential complications." },
-          { type: "paragraph", text: "Our team partnered with KATH Hospital in Ghana to understand their specific challenges and constraints." }
+          { type: "paragraph", text: "In under-resourced hospitals, particularly in developing countries like Ghana, IV drip monitoring is often done manually by nursing staff. To get the infusion goingat the right speed, they start it by adjusting the roller clamp and counting drops until it is going at the right rate. Over time, this leads to delayed responses when IV bags stop running, causing patient discomfort and potential complications. For example, if a patient adjusts their arm into a position where the IV flow is disrupted or another patient bumps into the IV setup, there is no current system in place to fix it until a nurse or the patient notice the disruption." },
+          { type: "paragraph", text: "Infusion pumps which typically cost ~$3000 control and monitor the drip rate, however the price limited the number of infusion pumps available. They are often only given to ___ poeple per room." },
+          { type: "paragraph", text: "Our team partnered with KATH Hospital in Ghana to understand their specific challenges and create a device to improve the situation." }
         ]
       },
       {
-        title: "Our Approach",
+        title: "The Process before Travel",
         content: [
-          { type: "paragraph", text: "We designed a low-cost, autonomous monitoring device that can attach to standard IV stands and alert staff when intervention is needed." },
+          { type: "paragraph", text: "My first semester on the team I was a member of the engineering subteam and worked on the proof of concept circuit in order to create a device that monitored flow rate. This proof of concept worked by having a phototransisitor on one side of the drip chamber, and a IR light on the other side of the drip chamber. Everytime a drop comes through, the IR light is disrupted sending current down the phototransistor.__Picture of proof of concept" },
+          { type: "paragraph", text: "My next semester on the team, I became an Engineering Lead and was responsible for designing and manufacturing the housing for all of the components. The major responsibilities included a component that would hold the IR light and phototransistor in place and attach to a drip chamber, and a component that would attach to an IV pole and hold the PCB, batteries, and screen. Drip chambes are a small, transluscent cylinder in IV sets that connect the IV bag to tubing that allow for medical personnel to estimate the rate of fluid administration by counting the drops. My job was to create something that would hold the IR light and phototransistor in place across the drip chamber. The solution I came up with was a ring that slide onto the drip chamber and held the IR light and phototransistor using a press-fit design. [insert photo]" },
+          { type: "paragraph", text: "The next thing I designed and created was the main housing of the device that held the screen, pcb, and batteries. The main challenge behind this was the PCB and screen. They were connected using a short ribbon cable that came with the screen we purchased. On the PCB that was designed by the electrical engineering team, it was designed with the ribbon cable connector being on the long side. However, the screen had the ribbon cable connector on the short side. Another challenge was that the screen had to be on the outside of the housing to be used, while the PCB had to be protected on the inside of the housing. This may seem obvious, but with the short ribbon cable that came with the screen, I had to come up with a solution to make up for this. I designed this ____ using SolidWorks and 3-d printed it. It leaves a gap for the components on the pcb to be connected, and is designed to be easy to screw in the PCB and screen into the housing. The screen a simple ___ was hused to keep it in place. To attach this housing to an IV pole, I initially thought of using a 3-d printed press-fit design. However, I quickly learned that press-fits don't work well when weaker material (filament) is used to press-fit against stronger material (steel of IV pole). I then pivoted this and bought a stand was supposed to be used on cameras to attach it to the housing. With all of the parts of housing finiished and manufactured, the device was now ready for travel to KATH in order to get feedback from nurses, doctors, and engineers.  " },
+          
           { type: "bullets", items: [
             "Leading a 10-member engineering team creating a low-cost, autonomous IV drip monitoring device to improve patient outcomes in under-resourced hospitals.",
             "Designing and manufacturing the housing using SolidWorks and 3D printing, ensuring easy attachment to IV stands based on requirements from KATH Hospital in Ghana.",
@@ -67,9 +71,17 @@ export const PROJECTS: Project[] = [
         ]
       },
       {
-        title: "Current Progress",
+        title: "Travel",
         content: [
-          { type: "paragraph", text: "We have completed our initial prototype and are currently in the testing phase. The device successfully detects drip rate changes and can alert staff via a simple notification system." }
+          { type: "paragraph", text: "Over winter break, I traveled along with my team to Kumasi, Ghana in order tog et feedback from hospital leadership, hospital engineers, and nurses and doctors from various wards. Enjoy a slideshow of photos taken while there! While we were in Ghana, not everything went to plan with the device and a lot quick thinking and problem solving occured while there. The first thing that went wrong is that the IR light solder broke off on the prototype while on the way there. Two prototypes were brought and only one was broken, but the second prototype broke on the third day there. We had no functioning prototype after that and it all of the tools that would be used to solve this were back in Ann Arbor. To fix this, I traveled to a electronics component store across the city and bought a portable soldering iron. However, when we tried to solder the wire back to the IR light, it was impossible due to the size of the IR light. Whenever heat was applied, the plastic on the IR light would melt before the metal part. In order to get a good connection, I got the idea of taping a circular disk that touched the spot and then soldering the wire to the disk. This ended up working and we now had 1 functioning prototype again. Another big issue that we discovered while there was that our device didn't work outside. We had spent all of our time prototyping in the basement of an engineering building, that I never thought about how environmental factors would impact the device. This was a big issue, we actually found out that anywhere close to a window our device just wouldn't work because some sunlight would appear to be the IR light. After some quick thinking was done, a granola bar wrapper was used to create a pinhole that only direct IR light would go through which fixed this problem. We now had a functioning prototype that worked next to windows! Working under pressure given our timeframe was very stressful yet super rewarding. " },
+          { type: "paragraph", text: " While at the hospital I led interviews, and talked about the device in front of groups of people. From the data that we collected through design ethnography, I was able to come up with teh following information"},
+          
+          { type: "bullets", items: [
+            "Initially this device was meant for use in the emergency wards of hospitals and our community partner was an emergency nurse. However, there was a lot of interest from other units regarding our device and we were told that it would be very helpful. However, the current ring only fit one size drip chamber which didn't work for blood transfusions or pediatric IV setups. A ring that was adjustable and fit different drip chambers is now a priority",
+            "Infusion pumps are really nice to use because they also control the rate of speed, but the price range makes them unviable in many scenarios. If we could make our device also control the rate of flow while maintaining a low cost, it would be really impressive.",
+            "The touchscreen of our device was nice, but the nurses preferred buttons in addition. They wanted multiple ways to interact with the device. ."
+          ]}
+         
         ]
       }
     ]
