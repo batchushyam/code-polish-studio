@@ -173,7 +173,8 @@ export const PROJECTS: Project[] = [
         title: "What?",
         content: [
           { type: "paragraph", text: "Designed and manufactured a 40+ part robot to complete three functional requirements with a focus on maximizing points in the end-of-semester competition." },
-          { type: "image", src: "/projects/rc-robot-cad.png", alt: "CAD model of the remote controlled robot", caption: "SolidWorks CAD model of the robot design" }
+          { type: "paragraph", text: "This robot had three distinct subsystems. The clamp subsystem securely picked up a flag by using a motor to rotate a 3D-printed piece that fitted a magnet to another magnet on the other side of the flag. The lead screw subsystem elevated and lowered the clamp using a planetary gearbox, a lead screw attached to the gearbox with a spring pin, and three guiding rods. A lead screw mechanism was chosen for its \"self-locking\" capabilities — the platform holding the clamping mechanism wouldn't fall down on its own. The drivetrain subsystem used a double gearbox, two front wheels, and a caster wheel. A caster wheel was chosen instead of two back wheels because it allowed for spinning in place, which was a major advantage on the playing field." },
+          { type: "image", src: "/projects/rc-robot-subsystems.png", alt: "Diagram showing the three subsystems: Clamp, Lead Screw, and Drivetrain", caption: "The three distinct subsystems of the robot" }
         ]
       },
       {
@@ -187,6 +188,7 @@ export const PROJECTS: Project[] = [
             type: "mediaShowcase", 
             title: "Robot Build", 
             items: [
+              { label: "CAD Model", src: "/projects/rc-robot-cad.png", mediaType: "image" },
               { label: "Full Robot View", src: "/projects/rc-robot-full.jpg", mediaType: "image" },
               { label: "Clamp Open", src: "/projects/rc-robot-clamp-open.jpg", mediaType: "image" },
               { label: "Clamp Closed", src: "/projects/rc-robot-clamp-closed.jpg", mediaType: "image" }
