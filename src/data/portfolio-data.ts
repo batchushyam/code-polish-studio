@@ -213,27 +213,51 @@ export const PROJECTS: Project[] = [
   {
     id: 4,
     title: "4-Bar Linkage",
-    category: "Space Systems",
-    image: "/projects/4bar-linkage-thumbnail.jpg",
+    category: "Mechanical Design",
+    image: "/projects/4bar-linkage-board.png",
     year: "January 2025 - May 2025",
-    role: "Surfaces Team Member",
-    summary: "Contracted by NASA to develop a filtration system for the ISS; modeled components using SolidWorks.",
-    tech: ["Ansys FEA", "SolidWorks", "NASA Standards", "Morphological Charts"],
+    role: "Mechanical Engineer",
+    summary: "Designed, analyzed, manufactured, and tested a 4-bar linkage mechanism with optimized transmission angle and PID-controlled motor.",
+    tech: ["SolidWorks", "ADAMS", "Stress Analysis", "PID Control", "Waterjetting", "Conventional Machining"],
     sections: [
       {
-        title: "NASA Partnership",
+        title: "01. Design",
         content: [
-          { type: "paragraph", text: "Our team was contracted by NASA to develop a critical filtration system component for the International Space Station." },
-          { type: "bullets", items: [
-            "Contracted by NASA to develop a filtration system for the ISS; modeled components using SolidWorks.",
-            "Met NASA constraints on air flow using geometric properties and Ansys FEA analysis.",
-            "Produced trade studies and morphological charts to guide decisions on key design choices and materials."
-          ]}
+          { type: "paragraph", text: "For a successful design, we optimized the transmission angle to maximize linkage speed. We determined the geometry of the linkage which meets this requirement, and maintained this geometry throughout the design process." },
+          { type: "paragraph", text: "We modeled our design in SolidWorks, using cutouts in the linkage to decrease weight. An optimal 12:35 gear ratio was chosen based on inertia matching of the load and motor inertia to minimize the torque needed to power the linkage. Torque is transferred to the gears using a spring pin, and to the input using two screws." },
+          { type: "image", src: "/placeholder.svg", alt: "Linkage geometry in leftmost and rightmost positions", caption: "Figure 1: Linkage geometry in leftmost and rightmost positions" },
+          { type: "image", src: "/placeholder.svg", alt: "Transmission design detail view", caption: "Figure 2: Detail view of transmission design" }
         ]
       },
       {
-        title: "Demonstration",
+        title: "02. Motion Analysis",
         content: [
+          { type: "paragraph", text: "The linkage design was exported to ADAMS for motion analysis. Based on ADAMS results, the linkage takes 0.69s and 0.69W to move from 87 degrees from the leftmost to rightmost position. The linkage weighs 2.5kg based on the ADAMS model." },
+          { type: "paragraph", text: "Note that the linkage accelerates until 3.5s, then decelerates until it reaches position 5. Therefore, the angular velocity, power, and torque graphs spike at 3.5s. Power is maximized at this time." },
+          { type: "paragraph", text: "The ADAMS results are a theoretical model of a real life design. Therefore, a safety factor of 1.5 was used for power when determining how fast the linkage should go. This safety factor accounts for power losses to friction in the motor and the joints, which were not accounted for in the theoretical simulation." },
+          { type: "image", src: "/placeholder.svg", alt: "ADAMS model of linkage", caption: "Figure 3: ADAMS model of linkage" },
+          { type: "image", src: "/placeholder.svg", alt: "Angular Displacement, Angular Velocity, Torque, Power graphs", caption: "Figure 4: From left to right: Angular Displacement, Angular Velocity, Torque, Power" }
+        ]
+      },
+      {
+        title: "03. Stress Analysis",
+        content: [
+          { type: "paragraph", text: "Stress analysis was completed in each place torque gets transferred (spring pin, gear mesh, screws connecting gears to input). Each component was verified to have an adequate safety factor to ensure the linkage would not fail under operating loads." },
+          { type: "image", src: "/placeholder.svg", alt: "Stress analysis sample calculation", caption: "Figure 5: Sample stress analysis — spring pin shear calculation" }
+        ]
+      },
+      {
+        title: "04. Manufacturing",
+        content: [
+          { type: "paragraph", text: "Detailed engineering drawings were produced for each part before physically creating them. Rather than going with a rectangular design, we removed unnecessary material and added curvature to improve aesthetics and reduce material waste." },
+          { type: "image", src: "/placeholder.svg", alt: "Manufacturing drawing for base plate", caption: "Figure 6: Base plate manufacturing drawing" },
+          { type: "image", src: "/placeholder.svg", alt: "Manufacturing plan", caption: "Figure 7: Manufacturing plan" }
+        ]
+      },
+      {
+        title: "05. Experimentation",
+        content: [
+          { type: "paragraph", text: "Below is a demo of the linkage CAD, as well as a video of our physical testing. We used PID for smooth control, and increased efficiency by incorporating two ways to hit target 4." },
           { type: "mediaShowcase", title: "4-Bar Linkage in Action", items: [
             { label: "Physical Demonstration", src: "/projects/4bar-linkage-real.mov", mediaType: "video" }
           ], description: "Video demonstration of the 4-bar linkage mechanism in operation." }

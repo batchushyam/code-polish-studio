@@ -141,7 +141,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
               <video
                 src={block.realVideo}
                 controls
-                className="w-full rounded-lg shadow-md aspect-video object-cover"
+                className="w-full rounded-lg shadow-md aspect-video object-contain bg-black"
                 playsInline
               />
             </div>
@@ -150,7 +150,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
               <video
                 src={block.modelVideo}
                 controls
-                className="w-full rounded-lg shadow-md aspect-video object-cover"
+                className="w-full rounded-lg shadow-md aspect-video object-contain bg-black"
                 playsInline
               />
             </div>
@@ -178,7 +178,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
                   <video
                     src={item.src}
                     controls
-                    className="w-full rounded-lg shadow-md aspect-video object-cover"
+                    className="w-full rounded-lg shadow-md aspect-video object-contain bg-black"
                     playsInline
                   />
                 ) : (
