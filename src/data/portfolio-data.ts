@@ -214,7 +214,7 @@ export const PROJECTS: Project[] = [
     id: 4,
     title: "4-Bar Linkage",
     category: "Space Systems",
-    image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2672&auto=format&fit=crop",
+    image: "/projects/4bar-linkage-thumbnail.jpg",
     year: "January 2025 - May 2025",
     role: "Surfaces Team Member",
     summary: "Contracted by NASA to develop a filtration system for the ISS; modeled components using SolidWorks.",
@@ -229,6 +229,14 @@ export const PROJECTS: Project[] = [
             "Met NASA constraints on air flow using geometric properties and Ansys FEA analysis.",
             "Produced trade studies and morphological charts to guide decisions on key design choices and materials."
           ]}
+        ]
+      },
+      {
+        title: "Demonstration",
+        content: [
+          { type: "mediaShowcase", title: "4-Bar Linkage in Action", items: [
+            { label: "Physical Demonstration", src: "/projects/4bar-linkage-real.mov", mediaType: "video" }
+          ], description: "Video demonstration of the 4-bar linkage mechanism in operation." }
         ]
       }
     ]
