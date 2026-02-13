@@ -7,7 +7,7 @@ import neecLogo from "@/assets/logos/neec-logo.png";
 // Map company names to their logos
 const companyLogos: Record<string, string> = {
   "University of Michigan": umichLogo,
-  "Boston Scientific Company": bostonScientificLogo,
+  "Boston Scientific": bostonScientificLogo,
   "Naval Engineering Education Consortium": neecLogo,
 };
 
@@ -68,12 +68,12 @@ export const Experience = () => {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="flex items-start gap-4"
               >
-                <div className={`w-12 h-12 rounded-lg bg-white flex items-center justify-center flex-shrink-0 overflow-hidden border border-border ${job.company === "Boston Scientific Company" ? "" : ""}`}>
+                <div className={`w-12 h-12 rounded-lg bg-white flex items-center justify-center flex-shrink-0 overflow-hidden border border-border ${job.company === "Boston Scientific" ? "" : ""}`}>
                   {logo ? (
                     <img 
                       src={logo} 
                       alt={job.company} 
-                      className={`${job.company === "Boston Scientific Company" ? "w-full h-full object-cover scale-125" : "w-full h-full object-contain p-1"}`}
+                      className={`${job.company === "Boston Scientific" ? "w-full h-full object-cover scale-125" : "w-full h-full object-contain p-1"}`}
                     />
                   ) : (
                     <span className="text-accent font-serif text-lg">

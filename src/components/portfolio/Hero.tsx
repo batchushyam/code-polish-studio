@@ -23,7 +23,7 @@ export const Hero = () => {
               <img 
                 src={profilePhoto} 
                 alt="Shyam Batchu"
-                className="w-full h-full object-cover object-top"
+                className="w-full h-full object-cover object-center"
               />
             </div>
           </motion.div>
