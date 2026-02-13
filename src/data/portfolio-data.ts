@@ -257,7 +257,7 @@ export const PROJECTS: Project[] = [
           { type: "image", src: "/projects/FollowerDrawing.png", alt: "Manufacturing drawing for follower link", caption: "Manufacturing drawing for follower link" },
           { type: "image", src: "/projects/FollowerManufacturingPlan.png", alt: "Manufacturing plan", caption: "Manufacturing plan for follower link" },
           { type: "paragraph", text: "A video showing how all of the components connect was also made and shown below."},
-          { type: "video", src: "/projects/Final.mp4", alt: "Assembly video", caption: "Assembly video" }
+          { type: "mediaShowcase", title: "Assembly Video", items: [{ label: "Assembly", src: "/projects/Final.mp4", mediaType: "video" }] }
         ]
       },
       {
