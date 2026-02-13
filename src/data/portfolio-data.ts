@@ -74,7 +74,7 @@ export const PROJECTS: Project[] = [
         title: "Travel",
         content: [
           { type: "paragraph", text: "Over winter break, I traveled along with my team to Kumasi, Ghana in order tog et feedback from hospital leadership, hospital engineers, and nurses and doctors from various wards. Enjoy a slideshow of photos taken while there! While we were in Ghana, not everything went to plan with the device and a lot quick thinking and problem solving occured while there. The first thing that went wrong is that the IR light solder broke off on the prototype while on the way there. Two prototypes were brought and only one was broken, but the second prototype broke on the third day there. We had no functioning prototype after that and it all of the tools that would be used to solve this were back in Ann Arbor. To fix this, I traveled to a electronics component store across the city and bought a portable soldering iron. However, when we tried to solder the wire back to the IR light, it was impossible due to the size of the IR light. Whenever heat was applied, the plastic on the IR light would melt before the metal part. In order to get a good connection, I got the idea of taping a circular disk that touched the spot and then soldering the wire to the disk. This ended up working and we now had 1 functioning prototype again. Another big issue that we discovered while there was that our device didn't work outside. We had spent all of our time prototyping in the basement of an engineering building, that I never thought about how environmental factors would impact the device. This was a big issue, we actually found out that anywhere close to a window our device just wouldn't work because some sunlight would appear to be the IR light. After some quick thinking was done, a granola bar wrapper was used to create a pinhole that only direct IR light would go through which fixed this problem. We now had a functioning prototype that worked next to windows! Working under pressure given our timeframe was very stressful yet super rewarding. " },
-          { type: "paragraph", text: " While at the hospital I led interviews, and talked about the device in front of groups of people. From the data that we collected through design ethnography, I was able to come up with teh following information"},
+          { type: "paragraph", text: " While at the hospital I led interviews, and talked about the device in front of groups of people. From the data that we collected through design ethnography, I was able to come up with the following information"},
           
           { type: "bullets", items: [
             "Initially this device was meant for use in the emergency wards of hospitals and our community partner was an emergency nurse. However, there was a lot of interest from other units regarding our device and we were told that it would be very helpful. However, the current ring only fit one size drip chamber which didn't work for blood transfusions or pediatric IV setups. A ring that was adjustable and fit different drip chambers is now a priority",
@@ -216,97 +216,91 @@ export const PROJECTS: Project[] = [
     category: "Mechanical Design",
     image: "/projects/4bar-linkage-board.png",
     year: "January 2025 - May 2025",
-    role: "Mechanical Engineer",
-    summary: "Designed, analyzed, manufactured, and tested a 4-bar linkage mechanism with optimized transmission angle and PID-controlled motor.",
+    role: "Team Project",
+    summary: "Designed, analyzed, manufactured, and tested a 4-bar linkage mechanism with optimized transmission angles and PID-controlled motor.",
     tech: ["SolidWorks", "ADAMS", "Stress Analysis", "PID Control", "Waterjetting", "Conventional Machining"],
     sections: [
       {
-        title: "01. Design",
+        title: "Context",
         content: [
-          { type: "paragraph", text: "For a successful design, we optimized the transmission angle to maximize linkage speed. We determined the geometry of the linkage which meets this requirement, and maintained this geometry throughout the design process." },
-          { type: "paragraph", text: "We modeled our design in SolidWorks, using cutouts in the linkage to decrease weight. An optimal 12:35 gear ratio was chosen based on inertia matching of the load and motor inertia to minimize the torque needed to power the linkage. Torque is transferred to the gears using a spring pin, and to the input using two screws." },
-          { type: "image", src: "/placeholder.svg", alt: "Linkage geometry in leftmost and rightmost positions", caption: "Figure 1: Linkage geometry in leftmost and rightmost positions" },
-          { type: "image", src: "/placeholder.svg", alt: "Transmission design detail view", caption: "Figure 2: Detail view of transmission design" }
+          { type: "paragraph", text: "Our team was tasked with creating a mechatronic system capable of detecting zombies (targets) and firing an LED at the corresponding photosensor. The goal was to prioritize the furthest targets using proximity sensors and navigate a 4-bar linkage across the playing field with high speed and precision." },
+        ]
+      },      
+      {
+        title: "Design and Geometry Optimization",
+        content: [
+          { type: "paragraph", text: "We selected a design that optimized link lengths for a balance of weight and transmission angle. The final linkage consists of aluminum links (Input: 7.17\", Follower: 7.02\") and a lightweight 3D-printed PLA flashlight mount. The entire moving mechanism weighs only 160 grams to minimize inertia." },
+          { type: "paragraph", text: "A transmission ratio of 1.33 was chosen after comparing inertia matching and light beam resolution requirements. This ratio ensures the motor could resolve 0.1875° per encoder count, providing the necessary precision to hit targets. We utilized a gear-driven system over belts or chains to maximize efficiency and eliminate slippage." },
+          { type: "image", src: "/projects/linkage-geometry.png", alt: "Linkage geometry in target positions", caption: "Figure 1: Linkage geometry and ground pivot locations relative to the game board." },
+          { type: "image", src: "/projects/transmission-view.png", alt: "Gear transmission detail view", caption: "Figure 2: Detail view of the 4:3 gear transmission and spring pin coupling." }
         ]
       },
       {
-        title: "02. Motion Analysis",
+        title: "Dynamic Analysis (ADAMS)",
         content: [
-          { type: "paragraph", text: "The linkage design was exported to ADAMS for motion analysis. Based on ADAMS results, the linkage takes 0.69s and 0.69W to move from 87 degrees from the leftmost to rightmost position. The linkage weighs 2.5kg based on the ADAMS model." },
-          { type: "paragraph", text: "Note that the linkage accelerates until 3.5s, then decelerates until it reaches position 5. Therefore, the angular velocity, power, and torque graphs spike at 3.5s. Power is maximized at this time." },
-          { type: "paragraph", text: "The ADAMS results are a theoretical model of a real life design. Therefore, a safety factor of 1.5 was used for power when determining how fast the linkage should go. This safety factor accounts for power losses to friction in the motor and the joints, which were not accounted for in the theoretical simulation." },
-          { type: "image", src: "/placeholder.svg", alt: "ADAMS model of linkage", caption: "Figure 3: ADAMS model of linkage" },
-          { type: "image", src: "/placeholder.svg", alt: "Angular Displacement, Angular Velocity, Torque, Power graphs", caption: "Figure 4: From left to right: Angular Displacement, Angular Velocity, Torque, Power" }
+          { type: "paragraph", text: "The design was exported to MSC ADAMS to simulate a 97.53-degree sweep. By iterating through acceleration magnitudes, we optimized the sweep time to 0.48 seconds. This timing kept the peak power consumption at 0.875 kW, safely within the motor's operating limits while providing the dynamic response needed for high-speed gameplay." },
+          { type: "image", src: "/projects/adams-simulation.png", alt: "ADAMS model of linkage", caption: "Figure 3: ADAMS model used for power and torque verification." },
+          { type: "image", src: "/projects/performance-graphs.png", alt: "Power and Torque graphs", caption: "Figure 4: Simulated Power (Peak 0.875 kW) and Torque vs. Time for a 0.48s sweep." }
         ]
       },
       {
-        title: "03. Stress Analysis",
+        title: "Stress and Failure Analysis",
         content: [
-          { type: "paragraph", text: "Stress analysis was completed in each place torque gets transferred (spring pin, gear mesh, screws connecting gears to input). Each component was verified to have an adequate safety factor to ensure the linkage would not fail under operating loads." },
-          { type: "image", src: "/placeholder.svg", alt: "Stress analysis sample calculation", caption: "Figure 5: Sample stress analysis — spring pin shear calculation" }
+          { type: "paragraph", text: "We performed failure analysis on critical torque transfer points. While the gear teeth showed a healthy safety factor of >3.0, the motor shaft spring pin was identified as a weak point with a safety factor of 1.16. Real-world testing confirmed this, as the pin eventually failed due to fatigue under cyclic loading—a key learning point that led us to recommend hardened steel pins for future iterations." },
+          { type: "image", src: "/projects/stress-calc.png", alt: "Stress analysis on spring pin", caption: "Figure 5: Shear stress analysis on the 1050 steel spring pin." }
         ]
       },
       {
-        title: "04. Manufacturing",
+        title: "Manufacturing",
         content: [
-          { type: "paragraph", text: "Detailed engineering drawings were produced for each part before physically creating them. Rather than going with a rectangular design, we removed unnecessary material and added curvature to improve aesthetics and reduce material waste." },
-          { type: "image", src: "/placeholder.svg", alt: "Manufacturing drawing for base plate", caption: "Figure 6: Base plate manufacturing drawing" },
-          { type: "image", src: "/placeholder.svg", alt: "Manufacturing plan", caption: "Figure 7: Manufacturing plan" }
+          { type: "paragraph", text: "Detailed engineering drawings were created for each part before they were manufactured. Waterjets, mills, lathes, and 3-D printers were all used in order to manufacture different parts which gave great exposure to different types of manufacturing methods." },
+          { type: "image", src: "/projects/FollowerDrawing.png", alt: "Manufacturing drawing for follower link", caption: "Manufacturing drawing for follower link" },
+          { type: "image", src: "/projects/FollowerManufacturingPlan.png", alt: "Manufacturing plan", caption: "Manufacturing plan for follower link" }
         ]
       },
       {
-        title: "05. Experimentation",
+        title: "Programming and Results",
         content: [
-          { type: "paragraph", text: "Below is a demo of the linkage CAD, as well as a video of our physical testing. We used PID for smooth control, and increased efficiency by incorporating two ways to hit target 4." },
-          { type: "mediaShowcase", title: "4-Bar Linkage in Action", items: [
-            { label: "Physical Demonstration", src: "/projects/4bar-linkage-real.mov", mediaType: "video" }
-          ], description: "Video demonstration of the 4-bar linkage mechanism in operation." }
+          { type: "paragraph", text: "Control was implemented using an Arduino-based PID loop combined with PWM. This allowed the system to correct for overshoot caused by the linkage's inertia. The system successfully used proximity sensor data to calculate target urgency, providing a reliable closed-loop response to real-time target movement." },
+          { type: "mediaShowcase", title: "System in Operation", items: [
+            { label: "Hardware Demo", src: "/projects/4bar-linkage-real.mov", mediaType: "video" }
+          ], description: "The final system successfully identifying and targeting the furthest zombie and moving flashlight to point at the corresponding photosensor." }
         ]
       }
     ]
   },
   {
     id: 5,
-    title: "Boston Scientific Internship",
-    category: "Medical Device",
-    image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2672&auto=format&fit=crop",
-    year: "May 2025 - August 2025",
-    role: "Manufacturing Engineering Intern + 1 R&D Project",
-    summary: "Generated $162k+ in projected annual savings through process improvements and new equipment validation.",
-    tech: ["Ansys FEA", "SolidWorks", "NASA Standards", "Morphological Charts"],
+    title: "Lane Keeping Assist System on Highways",
+    category: "Modeling",
+    image: "/projects/lka.png",
+    year: "January 2026 - Present",
+    role: "Individual Project",
+    summary: "Using a dynamic bicycle model to represent vehicle handling. Creating a control system to minimize  lateral error (distance from lane center) and error yaw angle deviation while maintaining stability.",
+    tech: ["MatLab", "Simulink", "Control Systems", "Vehicle Modeling"],
     sections: [
       {
-        title: "Internship Overview",
+        title: "Coming Soon",
         content: [
-          { type: "paragraph", text: "During my internship at Boston Scientific, I worked on manufacturing engineering projects and contributed to R&D initiatives." },
-          { type: "bullets", items: [
-            "Contracted by NASA to develop a filtration system for the ISS; modeled components using SolidWorks.",
-            "Met NASA constraints on air flow using geometric properties and Ansys FEA analysis.",
-            "Produced trade studies and morphological charts to guide decisions on key design choices and materials."
-          ]}
+          { type: "paragraph", text: "As of February 2026, I'm currently working on this project and will update this page as progress is being made." },
         ]
       }
     ]
   },
   {
     id: 6,
-    title: "Naval Engineering Education Consortium",
-    category: "Research",
-    image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2672&auto=format&fit=crop",
-    year: "February 2024 - August 2025",
-    role: "Undergraduate Researcher",
-    summary: "Directed experiments with industry-grade equipment to model boat vibrations and identify patterns.",
-    tech: ["Ansys FEA", "SolidWorks", "NASA Standards", "Morphological Charts"],
+    title: "Mounting Solutions for Dopplers (Senior capstone project) ",
+    category: "Design",
+    image: "/projects/Doppler.jpg",
+    year: "January 2026 - Present",
+    role: "Team Project",
+    summary: "Mounting solution for Doppler to birthing patient for low-resource clinical settings.",
+    tech: ["Design Ethnography", "Prototyping", "3-D printing"],
     sections: [
       {
         title: "Research Focus",
         content: [
-          { type: "paragraph", text: "As an undergraduate researcher, I worked on modeling and analyzing boat vibrations using industry-standard equipment and software." },
-          { type: "bullets", items: [
-            "Contracted by NASA to develop a filtration system for the ISS; modeled components using SolidWorks.",
-            "Met NASA constraints on air flow using geometric properties and Ansys FEA analysis.",
-            "Produced trade studies and morphological charts to guide decisions on key design choices and materials."
-          ]}
+          { type: "paragraph", text: "For my senior capstone project, I'm creating a mounting solution that attaches Dopplers to birthing patients for reliable, extended monitoring. It is meant for low-resource clinical settings. As of February 2026, I'm currently working on the project and will update this page as progress is being made." },
         ]
       }
     ]

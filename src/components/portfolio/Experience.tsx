@@ -73,7 +73,7 @@ export const Experience = () => {
                     <img 
                       src={logo} 
                       alt={job.company} 
-                      className={`${job.company === "Boston Scientific" ? "w-full h-full object-cover scale-125" : "w-full h-full object-contain p-1"}`}
+                      className={`${job.company === "Boston Scientific Company" ? "w-full h-full object-cover scale-125" : "w-full h-full object-contain p-1"}`}
                     />
                   ) : (
                     <span className="text-accent font-serif text-lg">
