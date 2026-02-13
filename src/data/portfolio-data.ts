@@ -255,7 +255,9 @@ export const PROJECTS: Project[] = [
         content: [
           { type: "paragraph", text: "Detailed engineering drawings were created for each part before they were manufactured. Waterjets, mills, lathes, and 3-D printers were all used in order to manufacture different parts which gave great exposure to different types of manufacturing methods." },
           { type: "image", src: "/projects/FollowerDrawing.png", alt: "Manufacturing drawing for follower link", caption: "Manufacturing drawing for follower link" },
-          { type: "image", src: "/projects/FollowerManufacturingPlan.png", alt: "Manufacturing plan", caption: "Manufacturing plan for follower link" }
+          { type: "image", src: "/projects/FollowerManufacturingPlan.png", alt: "Manufacturing plan", caption: "Manufacturing plan for follower link" },
+          { type: "paragraph", text: "A video showing how all of the components connect was also made and shown below."},
+          { type: "video", src: "/projects/Final.mp4", alt: "Assembly video", caption: "Assembly video" }
         ]
       },
       {
