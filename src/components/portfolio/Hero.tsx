@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import profilePhoto from "@/assets/profile-photo.jpeg";
+const profilePhoto = "/projects/newheadshot.jpg";
 
 export const Hero = () => {
   return (
