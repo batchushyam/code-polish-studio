@@ -196,6 +196,29 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
           )}
         </motion.div>
       );
+
+    case "sideImage":
+      return (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 * index }}
+          className="flex flex-col md:flex-row gap-6 my-6"
+        >
+          <div className="md:w-2/5 flex-shrink-0">
+            <img
+              src={block.src}
+              alt={block.alt}
+              className="w-full rounded-xl shadow-lg object-contain"
+            />
+          </div>
+          <div className="md:w-3/5 space-y-4">
+            {block.paragraphs.map((p, idx) => (
+              <p key={idx} className="text-muted-foreground leading-relaxed">{p}</p>
+            ))}
+          </div>
+        </motion.div>
+      );
     
     default:
       return null;

@@ -18,7 +18,8 @@ export type ContentBlock =
   | { type: "quote"; text: string; attribution?: string }
   | { type: "callout"; title: string; text: string }
   | { type: "videoComparison"; title: string; realVideo: string; modelVideo: string; description?: string }
-  | { type: "mediaShowcase"; title: string; items: { label: string; src: string; mediaType: "image" | "video" }[]; description?: string };
+  | { type: "mediaShowcase"; title: string; items: { label: string; src: string; mediaType: "image" | "video" }[]; description?: string }
+  | { type: "sideImage"; src: string; alt: string; paragraphs: string[] };
 
 export interface ProjectSection {
   title: string;
@@ -51,9 +52,11 @@ export const PROJECTS: Project[] = [
       {
         title: "The Problem",
         content: [
-          { type: "paragraph", text: "In under-resourced hospitals, particularly in developing countries like Ghana, IV drip monitoring is often done manually by nursing staff. To get the infusion goingat the right speed, they start it by adjusting the roller clamp and counting drops until it is going at the right rate. Over time, this leads to delayed responses when IV bags stop running, causing patient discomfort and potential complications. For example, if a patient adjusts their arm into a position where the IV flow is disrupted or another patient bumps into the IV setup, there is no current system in place to fix it until a nurse or the patient notice the disruption." },
-          { type: "paragraph", text: "Infusion pumps which typically cost ~$3000 control and monitor the drip rate, however the price limited the number of infusion pumps available. They are often only given to ___ poeple per room." },
-          { type: "paragraph", text: "Our team partnered with KATH Hospital in Ghana to understand their specific challenges and create a device to improve the situation." }
+          { type: "sideImage", src: "/projects/drip-chamber.jpg", alt: "IV Setup showing drip chamber and roller clamp", paragraphs: [
+            "In under-resourced hospitals, particularly in developing countries like Ghana, IV drip monitoring is often done manually by nursing staff. To get the infusion goingat the right speed, they start it by adjusting the roller clamp and counting drops until it is going at the right rate. Over time, this leads to delayed responses when IV bags stop running, causing patient discomfort and potential complications. For example, if a patient adjusts their arm into a position where the IV flow is disrupted or another patient bumps into the IV setup, there is no current system in place to fix it until a nurse or the patient notice the disruption.",
+            "Infusion pumps which typically cost ~$3000 control and monitor the drip rate, however the price limited the number of infusion pumps available. They are often only given to ___ poeple per room.",
+            "Our team partnered with KATH Hospital in Ghana to understand their specific challenges and create a device to improve the situation."
+          ]}
         ]
       },
       {
