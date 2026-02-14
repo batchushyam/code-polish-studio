@@ -1,6 +1,6 @@
 export const PERSONAL_INFO = {
   name: "Shyam Batchu",
-  role: "Mechanical Engineer",
+  role: "Shyam's Engineering Portfolio",
   short_bio: "Hi! My name is Shyam Batchu and I am a senior at the University of Michigan studying mechanical engineering. I am especially interested in exploring the fields of robotics and design. Currently I'm working on building a low-cost medical device with Team Flow. When I'm not working on engineering stuff you can find me playing tennis, hiking, going to the gym, and spending too much time stressing about fantasy football.",
   email: "sbatchu@umich.edu",
   linkedin: "https://www.linkedin.com/in/shyambatchu",
