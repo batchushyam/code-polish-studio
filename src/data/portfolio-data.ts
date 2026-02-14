@@ -111,16 +111,16 @@ export const PROJECTS: Project[] = [
           { 
             type: "videoComparison", 
             title: "Medieval Trebuchet", 
-            realVideo: "/src/assets/projects/trebuchet-real.mp4", 
-            modelVideo: "/src/assets/projects/trebuchet-model.mp4",
+            realVideo: "/projects/trebuchet-real.mp4", 
+            modelVideo: "/projects/trebuchet-model.mp4",
             description: "This is a simulation of a trebuchet launch using a recursive multibody dynamics framework in MATLAB. The trebuchet is modeled using four rigid bodies (ground, counterweight, projectile, and arm) and three rotational joints between them. Each body is assigned precise mass and inertia tensors ($I$) based on its geometry (cylinder, cuboid, and sphere) to ensure realistic rotational dynamics. There are two distinct phases in this simulation: before the projectile loses contact with the ground and after the projectile loses contact with the ground. In the initial phase, the projectile is restricted to a 1D path along the ground. This is mathematically enforced through a unilateral vertical constraint. Using the system's Jacobian ($J$) and bias acceleration ($\sigma$), I constructed a augmented system of equations:  This allowed the solver to calculate the Lagrange multiplier ($\lambda$), representing the normal force. Once the normal force was negative (the ground is pulling the projectile downwards which is not feasible), the projectile lifts off and the second phase begins. Once contact is lost (indicated by a small pause in the simulation for visualization purposes), the projectile behaves as a free-swinging pendulum. The equations of motion shift to a purely inertial form ($M\ddot{q} = f + g$). The simulation ends when the relative joint angle between the projectile and the arm reaches $45^{\circ}$ ($\pi/4$) which is the point of release for trebuchet's. "
           },
           { 
             type: "mediaShowcase", 
             title: "Bipedal Robot", 
             items: [
-              { label: "Walking Gait", src: "/src/assets/projects/biped-walking.mp4", mediaType: "video" },
-              { label: "Running Gait", src: "/src/assets/projects/biped-running.mp4", mediaType: "video" }
+              { label: "Walking Gait", src: "/projects/biped-walking.mp4", mediaType: "video" },
+              { label: "Running Gait", src: "/projects/biped-running.mp4", mediaType: "video" }
             ],
             description: "In this project, I engineered a 7-DOF bipedal robot simulation by developing and implementing diverse kinematic joint classes to handle complex mechanical constraints. I modeled the robot's mobility using a Floating Base architecture, centered on a Virtual 3-DOF Joint that maps global $x$, $y$, and pitch coordinates into the system's generalized state.To achieve realistic locomotion, I integrated two distinct physical joint types: Revolute Joints at the hips to manage angular leg-swing and Translational (Prismatic) Joints for the knees to simulate telescoping leg extensions. By programming these joints within a recursive outward-pass framework, I ensured that the position, velocity, and acceleration of each successive link were accurately propagated through the branched kinematic chain. This modular approach allowed for the seamless translation of high-level trajectory data into coordinated walking and running gaits, demonstrating a deep understanding of how specific joint constraints define robot topology and movement."
           },
@@ -128,10 +128,10 @@ export const PROJECTS: Project[] = [
             type: "mediaShowcase", 
             title: "Hopping Robot", 
             items: [
-              { label: "Model Diagram", src: "/src/assets/projects/hopping-robot-diagram.png", mediaType: "image" },
-              { label: "Aligned Drop", src: "/src/assets/projects/hopping-aligned.mp4", mediaType: "video" },
-              { label: "Crooked Drop", src: "/src/assets/projects/hopping-crooked.mp4", mediaType: "video" },
-              { label: "Generalized Coordinates", src: "/src/assets/projects/hopping-coordinates.png", mediaType: "image" }
+              { label: "Model Diagram", src: "/projects/hopping-robot-diagram.png", mediaType: "image" },
+              { label: "Aligned Drop", src: "/projects/hopping-aligned.mp4", mediaType: "video" },
+              { label: "Crooked Drop", src: "/projects/hopping-crooked.mp4", mediaType: "video" },
+              { label: "Generalized Coordinates", src: "/projects/hopping-coordinates.png", mediaType: "image" }
             ],
             description: "The robot is modeled as a 5-DOF system using a floating-base approach. To simplify the kinematics of the complex hip joint (which requires both rotation and translation), I implemented a massless pelvis trick. This allows the system to be modeled as a serial chain using standard joint classes:Virtual 3-DOF Joint: Manages the main body's $x$, $y$, and pitch ($\theta$).Revolute Joint ($\gamma$): Attaches the body to the pelvis for hip rotation.Translational Joint ($\Delta L$): Attaches the pelvis to the leg for telescoping movement.Parallel Elasticity: A virtual spring force (stiffness $k = 800$) is applied along the leg extension joint to model the hopping energy storage.2. Multi-Phase Simulation & Impact LogicThe simulation captures the non-linear transitions between different physical states:Flight Phase (Unconstrained): The robot moves under gravity until a custom event function (footContact) detects the foot crossing the ground threshold ($y=0$).Plastic Impact: Upon contact, I calculated the instantaneous change in generalized velocities ($q^+_{Dot}$) using a discrete impact map. This accounts for the sudden loss of energy and ensures the velocities are consistent with the new ground constraint.Stance Phase (Constrained): The foot is locked to the ground via a 2D constraint Jacobian ($J$). I utilized the KKT (Augmented Mass Matrix) approach to solve for both the robot's accelerations and the ground reaction forces ($\lambda$).3. Contact Transition LogicA critical component of this project was the automated transition back to flight. By monitoring the vertical component of the Lagrange multiplier ($\lambda$), the simulation identifies the exact moment the spring force overcomes gravity and the ground pushes the robot back into the air. When $\lambda$ reaches zero, the footLossOfContact event triggers, reverting the system to unconstrained flight dynamics."
           },
@@ -139,10 +139,10 @@ export const PROJECTS: Project[] = [
             type: "mediaShowcase", 
             title: "Teacup Ride", 
             items: [
-              { label: "Real World", src: "/src/assets/projects/teacup-real.mp4", mediaType: "video" },
-              { label: "Model", src: "/src/assets/projects/teacup-model.mp4", mediaType: "video" },
-              { label: "Position of Rider", src: "/src/assets/projects/teacup-position.png", mediaType: "image" },
-              { label: "Acceleration of Rider", src: "/src/assets/projects/teacup-acceleration.png", mediaType: "image" }
+              { label: "Real World", src: "/projects/teacup-real.mp4", mediaType: "video" },
+              { label: "Model", src: "/projects/teacup-model.mp4", mediaType: "video" },
+              { label: "Position of Rider", src: "/projects/teacup-position.png", mediaType: "image" },
+              { label: "Acceleration of Rider", src: "/projects/teacup-acceleration.png", mediaType: "image" }
             ],
             description: "This project involved the kinematic analysis and simulation of a teacup ride, modeled as a series of three nested rigid bodies ($A, B,$ and $C$) undergoing simultaneous relative rotations. By defining angular velocities in a hierarchical fashion—where each body’s motion is relative to its parent frame—I successfully modeled the complex propagation of motion from the central turntable to a rider at the periphery. I implemented recursive algorithms to calculate the absolute position, velocity, and acceleration of the rider (Point D) by accounting for centripetal and Coriolis effects across multiple reference frames.The simulation was executed through a custom numerical integration loop, updating orientation matrices and position vectors over a 15-second trajectory. To simulate the physical experience of a passenger, I performed frame transformations to map the inertial accelerations back into the rider’s body-fixed reference frame. By plotting the $c_1$ and $c_3$ acceleration components, I was able to simulate exactly what an onboard accelerometer (or the rider's own body) would feel."
           }
