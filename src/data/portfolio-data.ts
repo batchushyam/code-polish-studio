@@ -44,7 +44,7 @@ export const PROJECTS: Project[] = [
     title: "Autonomous IV Monitor",
     category: "Medical Device",
     image: "/projects/iv-monitor.jpeg",
-    year: "September 2024-Present",
+    year: "September 2024 - Present",
     role: "Engineering Lead",
     summary: "Leading a 10-member engineering team creating a low-cost, autonomous IV drip monitoring device to improve patient outcomes in under-resourced hospitals. Traveled to Komfo Anokye Teaching Hospital (KATH) in Kumasi, Ghana to test out the device and get feedback.",
     tech: ["SolidWorks", "3D Printing", "Circuit Design", "Medical Device"],
