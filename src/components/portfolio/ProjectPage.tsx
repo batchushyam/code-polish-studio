@@ -71,6 +71,28 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
         </motion.figure>
       );
     
+    case "video":
+      return (
+        <motion.figure
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 * index }}
+          className="my-8"
+        >
+          <video
+            src={block.src}
+            controls
+            playsInline
+            className="w-full rounded-xl shadow-lg"
+          />
+          {block.caption && (
+            <figcaption className="text-sm text-muted-foreground mt-3 text-center italic">
+              {block.caption}
+            </figcaption>
+          )}
+        </motion.figure>
+      );
+
     case "gallery":
       return (
         <motion.div
