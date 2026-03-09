@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/portfolio-data";
+import { assetUrl } from "@/lib/assets";
 
 interface ProjectCardProps {
   project: Project;
