@@ -22,7 +22,7 @@ export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
       {/* Image Container */}
       <div className="relative aspect-[4/3] overflow-hidden rounded-2xl mb-5 bg-muted">
         <img
-          src={project.image}
+          src={assetUrl(project.image)}
           alt={project.title}
           className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />

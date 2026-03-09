@@ -286,7 +286,7 @@ export const ProjectPage = ({ project, onBack }: ProjectPageProps) => {
           className="aspect-video w-full bg-muted rounded-2xl overflow-hidden mb-12 shadow-xl"
         >
           <img
-            src={project.image}
+            src={assetUrl(project.image)}
             alt={project.title}
             className="w-full h-full object-cover"
           />
