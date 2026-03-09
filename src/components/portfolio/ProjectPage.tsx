@@ -105,7 +105,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
           {block.images.map((img, idx) => (
             <figure key={idx}>
               <img
-                src={img.src}
+                src={assetUrl(img.src)}
                 alt={img.alt}
                 className="w-full rounded-lg shadow-md aspect-video object-cover"
               />
