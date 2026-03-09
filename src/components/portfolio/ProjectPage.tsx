@@ -81,7 +81,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
           className="my-8"
         >
           <video
-            src={block.src}
+            src={assetUrl(block.src)}
             controls
             playsInline
             className="w-full rounded-xl shadow-lg"
