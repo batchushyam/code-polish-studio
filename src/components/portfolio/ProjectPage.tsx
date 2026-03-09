@@ -60,7 +60,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
           className="my-8"
         >
           <img
-            src={block.src}
+            src={assetUrl(block.src)}
             alt={block.alt}
             className="w-full rounded-xl shadow-lg"
           />
