@@ -206,7 +206,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
                   />
                 ) : (
                   <img
-                    src={item.src}
+                    src={assetUrl(item.src)}
                     alt={item.label}
                     className="w-full rounded-lg shadow-md aspect-video object-contain bg-white"
                   />
