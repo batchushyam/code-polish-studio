@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-const profilePhoto = "/projects/newheadshot.jpg";
+import { assetUrl } from "@/lib/assets";
+const profilePhoto = assetUrl("/projects/newheadshot.jpg");
 
 export const Hero = () => {
   return (

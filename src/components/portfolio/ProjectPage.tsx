@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import type { Project, ContentBlock } from "@/data/portfolio-data";
+import { assetUrl } from "@/lib/assets";
 
 interface ProjectPageProps {
   project: Project;
