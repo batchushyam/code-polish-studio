@@ -171,7 +171,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
             <div>
               <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2 block">Model</span>
               <video
-                src={block.modelVideo}
+                src={assetUrl(block.modelVideo)}
                 controls
                 className="w-full rounded-lg shadow-md aspect-video object-contain bg-black"
                 playsInline
