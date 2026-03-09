@@ -199,7 +199,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
                 <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2 block">{item.label}</span>
                 {item.mediaType === "video" ? (
                   <video
-                    src={item.src}
+                    src={assetUrl(item.src)}
                     controls
                     className="w-full rounded-lg shadow-md aspect-video object-contain bg-black"
                     playsInline
