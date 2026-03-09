@@ -39,7 +39,7 @@ export const Navigation = ({ onScrollTo }: NavigationProps) => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6 }}
-            href="/Shyam_Batchu_Resume.pdf"
+            href={assetUrl("/Shyam_Batchu_Resume.pdf")}
             target="_blank"
             className="px-4 py-2 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:bg-primary/90 transition-colors"
           >
