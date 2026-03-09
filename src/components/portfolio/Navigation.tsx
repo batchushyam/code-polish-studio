@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { assetUrl } from "@/lib/assets";
 
 interface NavigationProps {
   onScrollTo: (id: string) => void;
@@ -38,7 +39,7 @@ export const Navigation = ({ onScrollTo }: NavigationProps) => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6 }}
-            href="/Shyam_Batchu_Resume.pdf"
+            href={assetUrl("/Shyam_Batchu_Resume.pdf")}
             target="_blank"
             className="px-4 py-2 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:bg-primary/90 transition-colors"
           >
@@ -77,7 +78,7 @@ export const Navigation = ({ onScrollTo }: NavigationProps) => {
               </button>
             ))}
             <a
-              href="/Shyam_Batchu_Resume.pdf"
+              href={assetUrl("/Shyam_Batchu_Resume.pdf")}
               target="_blank"
               className="block w-full text-left py-2 text-foreground font-medium"
             >

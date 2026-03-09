@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import type { Project, ContentBlock } from "@/data/portfolio-data";
+import { assetUrl } from "@/lib/assets";
 
 interface ProjectPageProps {
   project: Project;
@@ -59,7 +60,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
           className="my-8"
         >
           <img
-            src={block.src}
+            src={assetUrl(block.src)}
             alt={block.alt}
             className="w-full rounded-xl shadow-lg"
           />
@@ -80,7 +81,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
           className="my-8"
         >
           <video
-            src={block.src}
+            src={assetUrl(block.src)}
             controls
             playsInline
             className="w-full rounded-xl shadow-lg"
@@ -104,7 +105,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
           {block.images.map((img, idx) => (
             <figure key={idx}>
               <img
-                src={img.src}
+                src={assetUrl(img.src)}
                 alt={img.alt}
                 className="w-full rounded-lg shadow-md aspect-video object-cover"
               />
@@ -161,7 +162,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
             <div>
               <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2 block">Real World</span>
               <video
-                src={block.realVideo}
+                src={assetUrl(block.realVideo)}
                 controls
                 className="w-full rounded-lg shadow-md aspect-video object-contain bg-black"
                 playsInline
@@ -170,7 +171,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
             <div>
               <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2 block">Model</span>
               <video
-                src={block.modelVideo}
+                src={assetUrl(block.modelVideo)}
                 controls
                 className="w-full rounded-lg shadow-md aspect-video object-contain bg-black"
                 playsInline
@@ -198,14 +199,14 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
                 <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2 block">{item.label}</span>
                 {item.mediaType === "video" ? (
                   <video
-                    src={item.src}
+                    src={assetUrl(item.src)}
                     controls
                     className="w-full rounded-lg shadow-md aspect-video object-contain bg-black"
                     playsInline
                   />
                 ) : (
                   <img
-                    src={item.src}
+                    src={assetUrl(item.src)}
                     alt={item.label}
                     className="w-full rounded-lg shadow-md aspect-video object-contain bg-white"
                   />
@@ -234,7 +235,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
           </div>
           <div className="md:w-2/5 flex-shrink-0">
             <img
-              src={block.src}
+              src={assetUrl(block.src)}
               alt={block.alt}
               className="w-full rounded-xl shadow-lg object-contain"
             />
@@ -285,7 +286,7 @@ export const ProjectPage = ({ project, onBack }: ProjectPageProps) => {
           className="aspect-video w-full bg-muted rounded-2xl overflow-hidden mb-12 shadow-xl"
         >
           <img
-            src={project.image}
+            src={assetUrl(project.image)}
             alt={project.title}
             className="w-full h-full object-cover"
           />
