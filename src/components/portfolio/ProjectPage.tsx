@@ -235,7 +235,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
           </div>
           <div className="md:w-2/5 flex-shrink-0">
             <img
-              src={block.src}
+              src={assetUrl(block.src)}
               alt={block.alt}
               className="w-full rounded-xl shadow-lg object-contain"
             />
