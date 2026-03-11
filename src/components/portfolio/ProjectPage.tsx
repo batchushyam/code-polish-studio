@@ -232,6 +232,16 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
             {block.paragraphs.map((p, idx) => (
               <p key={idx} className="text-muted-foreground leading-relaxed">{p}</p>
             ))}
+            {block.bullets && (
+              <ul className="space-y-2">
+                {block.bullets.map((item, idx) => (
+                  <li key={idx} className="flex gap-3 text-muted-foreground leading-relaxed">
+                    <span className="w-1.5 h-1.5 bg-accent rounded-full mt-2.5 flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
           <div className="md:w-2/5 flex-shrink-0">
             <img
