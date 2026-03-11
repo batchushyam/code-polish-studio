@@ -54,9 +54,14 @@ export const PROJECTS: Project[] = [
         title: "The Problem",
         content: [
           { type: "sideImage", src: "/projects/drip-chamber.jpg", alt: "IV Setup showing drip chamber and roller clamp", paragraphs: [
-            "In under-resourced hospitals, particularly in developing countries like Ghana, IV drip monitoring is mostly done manually by nursing staff. To get the infusion going at the right speed, nursing staff start the infusion by adjusting the roller clamp. Roller clamps control the rate of fluid delivery by using a small wheel to compress or release the IV tubing against a tapered plastic track. This current manual method isn't ideal for a couple reasons. The first being that it takes a decent amount of time to set up the IV when you have to manually count the drip rate. The second reason is that this only ensures the drip rate is correct right when it is set up. The current method doesn't alert nurses if a bag empties, a patient moves their arm into a position where the IV flow is disrupted, the roller clamp loses tension over time, someone bumps into the setup and it changes the drip rate, etc. Although there are infusion pumps that exist that control the rate of the infusion, these hospitals are priced out of them because they cost thousands of dollars and it is very common for entire units to not have any infusion pumps.",
-            "Our team partnered with KATH Hospital in Ghana to understand their specific challenges and create a device to improve the situation."
-          ]}
+            "In under-resourced hospitals across developing nations like Ghana, IV drip monitoring relies almost entirely on manual labor. To administer fluids, nursing staff are forced to assess IV rates by eye, counting drops over a set period and manually adjusting a roller clamp to restrict or release the tubing.",
+            "While standard practice in these regions, this method is highly susceptible to error and presents two major challenges:"
+          ]},
+          { type: "bullets", items: [
+            "Time-Intensive Setup: Nurses must spend valuable time manually calculating and calibrating the milliliters of fluid delivered per hour.",
+            "Lack of Continuous Monitoring: A manual setup only ensures accuracy at the exact moment it is calibrated. There are no alarms to alert staff if the bag empties, a patient moves their arm and occludes the flow, the clamp loses tension, or the setup is accidentally bumped."
+          ]},
+          { type: "paragraph", text: "Although automated infusion pumps eliminate these risks, they typically cost thousands of dollars, completely pricing out these hospitals. It is common for entire medical units to lack a single pump. To bridge this critical gap, our team partnered with KATH Hospital in Ghana to understand their specific on-the-ground challenges and engineer a reliable, cost-effective device to modernize IV monitoring." }
         ]
       },
       {
