@@ -20,7 +20,7 @@ export type ContentBlock =
   | { type: "video"; src: string; caption?: string }
   | { type: "videoComparison"; title: string; realVideo: string; modelVideo: string; description?: string }
   | { type: "mediaShowcase"; title: string; items: { label: string; src: string; mediaType: "image" | "video" }[]; description?: string }
-  | { type: "sideImage"; src: string; alt: string; paragraphs: string[] };
+  | { type: "sideImage"; src: string; alt: string; paragraphs: string[]; bullets?: string[] };
 
 export interface ProjectSection {
   title: string;
@@ -56,8 +56,7 @@ export const PROJECTS: Project[] = [
           { type: "sideImage", src: "/projects/drip-chamber.jpg", alt: "IV Setup showing drip chamber and roller clamp", paragraphs: [
             "In under-resourced hospitals across developing nations like Ghana, IV drip monitoring relies almost entirely on manual labor. To administer fluids, nursing staff are forced to assess IV rates by eye, counting drops over a set period and manually adjusting a roller clamp to restrict or release the tubing.",
             "While standard practice in these regions, this method is highly susceptible to error and presents two major challenges:"
-          ]},
-          { type: "bullets", items: [
+          ], bullets: [
             "Time-Intensive Setup: Nurses must spend valuable time manually calculating and calibrating the milliliters of fluid delivered per hour.",
             "Lack of Continuous Monitoring: A manual setup only ensures accuracy at the exact moment it is calibrated. There are no alarms to alert staff if the bag empties, a patient moves their arm and occludes the flow, the clamp loses tension, or the setup is accidentally bumped."
           ]},
