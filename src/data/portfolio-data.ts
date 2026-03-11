@@ -20,7 +20,7 @@ export type ContentBlock =
   | { type: "video"; src: string; caption?: string }
   | { type: "videoComparison"; title: string; realVideo: string; modelVideo: string; description?: string }
   | { type: "mediaShowcase"; title: string; items: { label: string; src: string; mediaType: "image" | "video" }[]; description?: string }
-  | { type: "sideImage"; src: string; alt: string; paragraphs: string[] };
+  | { type: "sideImage"; src: string; alt: string; paragraphs: string[]; bullets?: string[] };
 
 export interface ProjectSection {
   title: string;
