@@ -1,370 +1,770 @@
-export const PERSONAL_INFO = {
-  name: "Shyam Batchu",
-  role: "Shyam's Engineering Portfolio",
-  short_bio: "Hi! My name is Shyam Batchu and I am a senior at the University of Michigan studying mechanical engineering. I am especially interested in exploring the fields of robotics and design. Currently I'm working on building a low-cost medical device with Team Flow. When I'm not working on engineering stuff you can find me playing tennis, hiking, going to the gym, and spending too much time stressing about fantasy football.",
-  email: "sbatchu@umich.edu",
-  linkedin: "https://www.linkedin.com/in/shyambatchu",
-  github: "#",
-  location: "Ann Arbor, MI"
-};
+import { StaticImageData } from "next/image";
 
-// Content block types for flexible project pages
-export type ContentBlock = 
-  | { type: "heading"; text: string }
-  | { type: "paragraph"; text: string }
-  | { type: "bullets"; items: string[] }
-  | { type: "image"; src: string; alt: string; caption?: string }
-  | { type: "gallery"; images: { src: string; alt: string; caption?: string }[] }
-  | { type: "quote"; text: string; attribution?: string }
-  | { type: "callout"; title: string; text: string }
-  | { type: "video"; src: string; caption?: string }
-  | { type: "videoComparison"; title: string; realVideo: string; modelVideo: string; description?: string }
-  | { type: "mediaShowcase"; title: string; items: { label: string; src: string; mediaType: "image" | "video" }[]; description?: string }
-  | { type: "sideImage"; src: string; alt: string; caption?: string; paragraphs: string[]; bullets?: string[] };
+import placeholderImage from "@/public/img/placeholder.jpg";
+import placeholderImage2 from "@/public/img/placeholder2.jpg";
+import placeholderImage3 from "@/public/img/placeholder3.jpg";
+import placeholderImage4 from "@/public/img/placeholder4.jpg";
+import placeholderImage5 from "@/public/img/placeholder5.jpg";
+import placeholderImage6 from "@/public/img/placeholder6.jpg";
+import placeholderImage7 from "@/public/img/placeholder7.jpg";
+import placeholderImage8 from "@/public/img/placeholder8.jpg";
 
-export interface ProjectSection {
-  title: string;
-  content: ContentBlock[];
-}
+export type ContentBlock =
+  | {
+      type: "heading";
+      text: string;
+    }
+  | {
+      type: "paragraph";
+      text: string;
+    }
+  | {
+      type: "bullets";
+      items: string[];
+    }
+  | {
+      type: "image";
+      src: string;
+      alt: string;
+      caption?: string;
+    }
+  | {
+      type: "video";
+      src: string;
+      caption?: string;
+    }
+  | {
+      type: "gallery";
+      images: { src: string; alt: string; caption?: string }[];
+    }
+  | {
+      type: "quote";
+      text: string;
+      attribution?: string;
+    }
+  | {
+      type: "callout";
+      title: string;
+      text: string;
+    }
+  | {
+      type: "videoComparison";
+      title: string;
+      realVideo: string;
+      modelVideo: string;
+      description?: string;
+    }
+  | {
+      type: "mediaShowcase";
+      title: string;
+      items: { label: string; src: string; mediaType: "image" | "video" }[];
+      description?: string;
+    }
+  | {
+    type: "sideImage";
+    src: string;
+    alt: string;
+    caption?: string;
+    paragraphs: string[];
+    bullets?: string[];
+  };
 
 export interface Project {
-  id: number;
+  slug: string;
   title: string;
   category: string;
-  image: string;
-  year: string;
   role: string;
-  summary: string; // Short description for card
+  year: string;
   tech: string[];
-  sections: ProjectSection[]; // Flexible blog-style sections
+  image: string;
+  summary: string;
+  sections: {
+    title: string;
+    content: ContentBlock[];
+  }[];
 }
 
-export const PROJECTS: Project[] = [
+export const featuredProjects: Project[] = [
   {
-    id: 1,
-    title: "Autonomous IV Monitor",
-    category: "Medical Device",
-    image: "/projects/iv-monitor.jpeg",
-    year: "September 2024 - Present",
-    role: "Engineering Lead",
-    summary: "Leading a 10-member engineering team creating a low-cost, autonomous IV drip monitoring device to improve patient outcomes in under-resourced hospitals. Traveled to Komfo Anokye Teaching Hospital (KATH) in Kumasi, Ghana to test out the device and get feedback.",
-    tech: ["SolidWorks", "3D Printing", "Circuit Design", "Medical Device"],
+    slug: "generative-garments",
+    title: "Generative Garments",
+    category: "Creative Coding",
+    role: "Concept, Code",
+    year: "2023",
+    tech: ["TouchDesigner", "AI", "Marvelous Designer"],
+    image: "img/generative-garments/featured.jpg",
+    summary:
+      "A series of experiments combining AI image generation with 3D fashion design, creating unique and surreal garments.",
     sections: [
       {
-        title: "The Problem",
+        title: "Concept",
         content: [
-          { type: "sideImage", src: "/projects/drip-chamber.jpg", alt: "IV Setup showing drip chamber and roller clamp", caption: "The completed device mounted on an IV pole with the drip chamber sensor attached", paragraphs: [
-            "In under-resourced hospitals across developing nations like Ghana, IV drip monitoring relies almost entirely on manual labor. To administer fluids, nursing staff are forced to assess IV rates by eye, counting drops over a set period and manually adjusting a roller clamp to restrict or release the tubing.",
-            "While assessing IV rates by eye is standard practice in these regions, this method is highly susceptible to error and presents two major challenges:"
-          ], bullets: [
-            "Time-Intensive Setup: Nurses must spend valuable time manually calculating and calibrating the milliliters of fluid delivered per hour.",
-            "Lack of Continuous Monitoring: A manual setup only ensures accuracy at the exact moment it is calibrated. There are no alarms to alert staff if the bag empties, a patient moves their arm and occludes the flow, the clamp loses tension, or the setup is accidentally bumped."
-          ]},
-          { type: "paragraph", text: "Although automated infusion pumps eliminate these risks, they typically cost thousands of dollars, completely pricing out these hospitals. It is common for entire medical units to lack a single pump. To bridge this critical gap, our team partnered with KATH Hospital in Ghana to understand their specific on-the-ground challenges and engineer a reliable, cost-effective device to modernize IV monitoring." }
-        ]
-      },
-      {
-        title: "The Process before Travel",
-        content: [
-          { 
-            type: "sideImage", 
-            src: "/projects/circuitbreadboard.png", 
-            alt: "proof of concept breadboard", 
-            caption: "The initial proof of concept circuit built on a breadboard. A test tube was used to mimic a drip chamber and foam housing was used to hold the IR light and phototransistor", 
-            paragraphs: [
-              "My first semester on the team I was a member of the engineering subteam and worked on the proof of concept circuit in order to create a device that monitored flow rate. This proof of concept worked by having a phototransisitor on one side of the drip chamber, and a IR light on the other side of the drip chamber. Everytime a drop came through, the IR light beam was disrupted which sent current down the phototransistor. This current thenwent through a voltage follower to ensure the full voltage passed through the circuit, a high pass filter which filter out low frequency signals and noise (an IV drop disrupts the beam very quickly leading to a high frequency signal), and finally a comparator which acts as a switch and counts drips by producing a square wave.",
-            ]
+          {
+            type: "paragraph",
+            text: "The project explores the intersection of artificial intelligence and fashion design. By using AI to generate textures and patterns, and then applying them to 3D models of clothing, I was able to create garments that would be impossible to produce through traditional methods.",
           },
-          { type: "paragraph", text: "My next semester on the team, I became an Engineering Lead and was responsible for designing and manufacturing the housing for all of the components. The major responsibilities included a component that would hold the IR light and phototransistor in place and attach to a drip chamber and a component that would attach to an IV pole and hold the PCB, batteries, and screen. Drip chambers are a small, transluscent cylinder in IV sets that connect the IV bag to tubing that allow for medical personnel to estimate the rate of fluid administration by counting the drops. I was responsible for creaing something that would hold the IR light and phototransistor in place across the drip chamber. The solution I came up with was a ring that slides onto the drip chamber and holds the IR light and phototransistor using a press-fit design." },
-          { type: "gallery", images: [
-            { src: "/projects/CAD_RING.png", alt: "CAD of Ring", caption: "CAD of ring that houses two sensors that slides onto drip chamber" },
-            { src: "/projects/RING_IRL.png", alt: "picture of Ring on drip chamber", caption: "Ring slid onto drip chamber" },
-          ]},
-          { type: "paragraph", text: "The next thing I designed and created was the main housing of the device that held the screen, pcb, and batteries. The main challenge behind this was the PCB and screen. They were connected using a short ribbon cable that came with the screen we purchased. On the PCB our team designed, it had the ribbon cable connector being on the short side of the PCB. However, the screen had the ribbon cable connector on the long side which led to misalignment between the two parts. Another challenge was that the screen had to be on the outside of the housing to be interacted with while the PCB had to be on the inside of the housing in order to be protected. I had to come up with a solution to overcome these difficulties. I designed this piece using SolidWorks and 3-d printed it. It leaves a gap for the components on the pcb to be connected, and is designed to be easy to screw in the PCB and screen into the housing. The screen a bezel piece was created to keep it in place. To attach this housing to an IV pole, I initially thought of using a 3-d printed press-fit design. However, I quickly learned that press-fits didn't work well when weaker material (filament) is used to press-fit against stronger material (steel of IV pole). I then pivoted this and bought a stand was supposed to be used on cameras to attach it to the housing. With all of the parts of housing finished and manufactured, the device was now ready for travel to KATH in order to get feedback from nurses, doctors, and engineers." },
-          { type: "video", src: "/projects/full_assembly_flow.mp4", caption: "Full assembly of the device" },
-          { type: "paragraph", text: "The device works by first showing the setup interface which is shown directly below. The nurse sets the prescribed drip rate (which is based on what prescription is given) and chooses the correct gtts/mL (drops per mL which changes depending on what IV setup is used). Once they have the correct settings, they click start which takes them to the monitoring interface." },
-          { type: "image", src: "/projects/device-on-iv-pole.jpeg", alt: "Autonomous IV Monitor device mounted on an IV pole", caption: "The device mounted on an IV pole with the setup interface" },
-          { type: "paragraph", text: " The monitoring interface shows the flow rate in mL/hour, a graph showing the history of the flow rate, and an indicator that apperas every time a drop passes through. At this stage there is no alarm that goes off when flow rate deviates from the prescribed rate, but an alarm will be added in the next iteration of the device." },
-          { type: "image", src: "/projects/monitor_interface.jpeg", alt: "Autonomous IV Monitor device mounted on an IV pole", caption: "The device mounted on an IV pole with the monitoring interface" },
-
-        ]
+          {
+            type: "image",
+            src: "img/generative-garments/concept.jpg",
+            alt: "AI generated texture",
+            caption: "AI generated texture",
+          },
+          {
+            type: "paragraph",
+            text: "The goal was to push the boundaries of what is possible in fashion design, and to explore the potential of AI as a tool for creativity. The project also raises questions about the role of the designer in the age of AI, and whether AI can be considered a true creative partner.",
+          },
+        ],
       },
       {
-        title: "Travel",
+        title: "Process",
         content: [
-          { type: "sideImage", src: "/projects/team-ghana.jpg", alt: "Team at KATH Hospital in Kumasi, Ghana", paragraphs: ["Over winter break, I traveled along with my team to Kumasi, Ghana in order to get feedback from hospital leadership, hospital engineers, nurses, and doctors from various wards. While we were in Ghana, not everything went to plan with the device, and a lot quick thinking and problem solving had to happen."] },
-          {  type: "paragraph", text: "For our field testing in Ghana, we traveled with two identical prototypes. However, we quickly hit a major hurdle with the IR light solder joints failing on both units due to the mechanical stress of travel. With both prototypes broken, we had no functioning prototype and all of the tools that would be used to solve this were back in Ann Arbor. To fix this, I traveled to a electronics component store across the city and bought a portable soldering iron. However, when we tried to solder the wire back to the IR light, we found that it wasn't going to work because the leads had sheared off at the very base of the IR bulb (not where it was previously soldered) making a standard solder impossible. When we tried to heat up the metal wire part of the IR light, the plastic on the IR light would melt before the metal part breaking the IR bulb. In order to connect the wire back to the IR light, I had the idea of taping a circular disk of solder while it was pressed down against the metal wire and then soldering the wire on to the disk instead of directly to the IR bulb. This ended up working, and we were able to repair the prototypes." },
-          { type: "paragraph", text: "Another big issue that we discovered while in Ghana was that our device didn't work outside. We had spent all of our time prototyping in the basement of an engineering building, that we never thought about how environmental factors would impact the device. This was a big issue as we actually found out that anywhere somewhat close to a window our device wouldn't work because sunlight would saturate the phototransistor with infrared light. After some quick thinking, a granola bar wrapper was used to create a small pinhole that only direct IR light from our IR bulb would go through. A granola bar wrapper was used because it was easily accessible to us and it was made of aluminum foil which is an excellent blocker of IR radiation. With this pinhole addition, we were able to alter our device to now work outside and next to windows! Navigating the device failing under a tight timeframe in Ghana was stressful, but sucessfully pivoting into a working solution was incredibly rewarding." },
-          { type: "paragraph", text: " While at the hospital, I led interviews and presented the device to groups of medical staff. Based on our design ethnography research, I identified the following key takeaways:"},
-          
-          { type: "bullets", items: [
-            "Creating a ring for different sized drip chambers: Initially this device was designed for use in the emergency wards of hospitals, but other hospitals units expressed a lot of interest regarding our device during interviews. However, the current ring only fit one size drip chamber which didn't work for other IV setups like blood transfusions or pediatric wards which use a different sized drip chamber. To make this device viable for other hospital units a ring that was adjustable and fit different drip chambers became a priority",
-            "Battery life is a priority: The touchscreen looked and worked great, but during our interviews we found that the lifetime of the device was very important to hospital staff. The touchscreen drained energy so a shift in how the user interacts with the device has to be made",
-            "Future development gap: While our device effectively fills the need for low-cost monitoring, staff feedback highlighted the value of active flow control found in infusion pumps. This presents an opportunity for a separate, future project: building a device that physically controls the flow rate while remaining cheaper than current market options. While disrupting a highly-iterated market is very difficult, operating as a student project team gives the unique advantage of zero R&D overhead that gives us the freedom to explore solutions that traditional companies can't"
-          ]}
-         
-        ]
+          {
+            type: "paragraph",
+            text: "The process began with generating textures and patterns using AI. I used a variety of AI models, including Stable Diffusion, to create a wide range of textures and patterns. These were then applied to 3D models of clothing using Marvelous Designer.",
+          },
+          {
+            type: "image",
+            src: "img/generative-garments/marvelous-designer.jpg",
+            alt: "3D model of a garment in Marvelous Designer",
+            caption: "3D model of a garment in Marvelous Designer",
+          },
+          {
+            type: "paragraph",
+            text: "The 3D models were then rendered using Cinema 4D and Octane Render. The final step was to composite the rendered images with additional effects and textures using After Effects.",
+          },
+        ],
       },
       {
-        title: "Post-Travel",
+        title: "Outcome",
         content: [
-          { type: "paragraph", text: " As of February 2026, I am currently working on creating a ring that works on drip chambers of different sizes using a spring loaded system (that also protects weak joints and works near sunlight), re-doing the housing with buttons instead of a touchscreen, and creating a peristaltic motor proof-of-concept to control the flow rate of infusion pumps. This section will be updated as progress is made." },          
-        ]
-      }
-    ]
+          {
+            type: "image",
+            src: "img/generative-garments/outcome.jpg",
+            alt: "Final result",
+            caption: "Final result",
+          },
+          {
+            type: "paragraph",
+            text: "The final result is a series of unique and surreal garments that showcase the potential of AI as a tool for creativity. The project was featured in a number of online publications, and was also exhibited at a gallery in Los Angeles.",
+          },
+        ],
+      },
+    ],
   },
   {
-    id: 2,
+    slug: "computational-simulations-of-multibody-systems",
     title: "Computational Simulations of Multibody Systems",
-    category: "Modeling",
-    image: "/projects/multibody-systems.png",
-    year: "January 2025 - May 2025",
-    role: "Individual Projects",
-    summary: "Created dynamics engine in MATLAB in order to model multibody systems.",
-    tech: ["MATLAB", "Dynamics", "Simulation", "Numerical Methods"],
+    category: "Research",
+    role: "Concept, Code, Simulations",
+    year: "2022",
+    tech: ["C++", "OpenGL", "CMake", "Blender"],
+    image: "img/multibody/featured.png",
+    summary:
+      "A real-time multibody simulation software, capable of simulating thousands of bodies and joints. Includes a custom physics engine, collision detection, and OpenGL rendering.",
     sections: [
       {
         title: "Overview",
         content: [
-          { type: "paragraph", text: "This course focused on computational methods for analyzing and simulating complex mechanical systems with multiple interconnected bodies. I built a dynamics engine in MATLAB to model real-world phenomena." }
-        ]
-      },
-      {
-        title: "Models",
-        content: [
-          { 
-            type: "videoComparison", 
-            title: "Medieval Trebuchet", 
-            realVideo: "/projects/trebuchet-real.mp4", 
-            modelVideo: "/projects/trebuchet-model.mp4",
-            description: "This is a simulation of a trebuchet launch using a recursive multibody dynamics framework in MATLAB. The trebuchet is modeled using four rigid bodies (ground, counterweight, projectile, and arm) and three rotational joints between them. Each body is assigned precise mass and inertia tensors (I) based on its geometry (cylinder, cuboid, and sphere) to ensure realistic rotational dynamics. There are two distinct phases in this simulation: before the projectile loses contact with the ground and after the projectile loses contact with the ground. In the initial phase, the projectile is restricted to a 1D path along the ground. This is mathematically enforced through a unilateral vertical constraint. Using the system's Jacobian (J) and bias acceleration (σ), I constructed an augmented system of equations. This allowed the solver to calculate the Lagrange multiplier (λ), representing the normal force. Once the normal force was negative (the ground is pulling the projectile downwards which is not feasible), the projectile lifts off and the second phase begins. Once contact is lost (indicated by a small pause in the simulation for visualization purposes), the projectile behaves as a free-swinging pendulum. The equations of motion shift to a purely inertial form (Mq̈ = f + g). The simulation ends when the relative joint angle between the projectile and the arm reaches 45° (π/4) which is the point of release for trebuchets."
+          {
+            type: "paragraph",
+            text: "This project involved the development of a real-time multibody simulation software using C++ and OpenGL. The primary goal was to create a robust and efficient simulation environment capable of handling a large number of rigid bodies and joints. The software features a custom physics engine, collision detection algorithms, and real-time rendering capabilities.",
           },
-          { 
-            type: "mediaShowcase", 
-            title: "Bipedal Robot", 
-            items: [
-              { label: "Walking Gait", src: "/projects/biped-walking.mp4", mediaType: "video" },
-              { label: "Running Gait", src: "/projects/biped-running.mp4", mediaType: "video" }
-            ],
-            description: "In this project, I engineered a 7-DOF bipedal robot simulation by developing and implementing diverse kinematic joint classes to handle complex mechanical constraints. I modeled the robot's mobility using a Floating Base architecture, centered on a Virtual 3-DOF Joint that maps global x, y, and pitch coordinates into the system's generalized state. To achieve realistic locomotion, I integrated two distinct physical joint types: Revolute Joints at the hips to manage angular leg-swing and Translational (Prismatic) Joints for the knees to simulate telescoping leg extensions. By programming these joints within a recursive outward-pass framework, I ensured that the position, velocity, and acceleration of each successive link were accurately propagated through the branched kinematic chain. This modular approach allowed for the seamless translation of high-level trajectory data into coordinated walking and running gaits, demonstrating a deep understanding of how specific joint constraints define robot topology and movement."
+          {
+            type: "image",
+            src: "img/multibody/overview.png",
+            alt: "Multibody Simulation",
+            caption: "Simulation of a complex mechanical system.",
           },
-          { 
-            type: "mediaShowcase", 
-            title: "Hopping Robot", 
-            items: [
-              { label: "Model Diagram", src: "/projects/hopping-robot-diagram.png", mediaType: "image" },
-              { label: "Aligned Drop", src: "/projects/hopping-aligned.mp4", mediaType: "video" },
-              { label: "Crooked Drop", src: "/projects/hopping-crooked.mp4", mediaType: "video" },
-              { label: "Generalized Coordinates", src: "/projects/hopping-coordinates.png", mediaType: "image" }
-            ],
-            description: "The robot is modeled as a 5-DOF system using a floating-base approach. To simplify the kinematics of the complex hip joint (which requires both rotation and translation), I implemented a massless pelvis trick. This allows the system to be modeled as a serial chain using standard joint classes: Virtual 3-DOF Joint manages the main body's x, y, and pitch (θ). Revolute Joint (γ) attaches the body to the pelvis for hip rotation. Translational Joint (ΔL) attaches the pelvis to the leg for telescoping movement. Parallel Elasticity: A virtual spring force (stiffness k = 800) is applied along the leg extension joint to model the hopping energy storage. Multi-Phase Simulation & Impact Logic: The simulation captures the non-linear transitions between different physical states. Flight Phase (Unconstrained): The robot moves under gravity until a custom event function (footContact) detects the foot crossing the ground threshold (y = 0). Plastic Impact: Upon contact, I calculated the instantaneous change in generalized velocities (q̇⁺) using a discrete impact map. This accounts for the sudden loss of energy and ensures the velocities are consistent with the new ground constraint. Stance Phase (Constrained): The foot is locked to the ground via a 2D constraint Jacobian (J). I utilized the KKT (Augmented Mass Matrix) approach to solve for both the robot's accelerations and the ground reaction forces (λ). Contact Transition Logic: A critical component of this project was the automated transition back to flight. By monitoring the vertical component of the Lagrange multiplier (λ), the simulation identifies the exact moment the spring force overcomes gravity and the ground pushes the robot back into the air. When λ reaches zero, the footLossOfContact event triggers, reverting the system to unconstrained flight dynamics."
+        ],
+      },
+      {
+        title: "Key Features",
+        content: [
+          {
+            type: "heading",
+            text: "Custom Physics Engine",
           },
-          { 
-            type: "mediaShowcase", 
-            title: "Teacup Ride", 
+          {
+            type: "paragraph",
+            text: "The physics engine was built from scratch to provide accurate and stable simulations. It supports various types of joints, including revolute, prismatic, and spherical joints. The engine uses a Verlet integration scheme for time integration, which offers good stability and performance.",
+          },
+          {
+            type: "heading",
+            text: "Collision Detection",
+          },
+          {
+            type: "paragraph",
+            text: "An efficient collision detection system was implemented to handle interactions between rigid bodies. The system uses a combination of bounding volume hierarchies (BVH) and Gilbert-Johnson-Keerthi (GJK) algorithm to quickly identify and resolve collisions.",
+          },
+          {
+            type: "heading",
+            text: "OpenGL Rendering",
+          },
+          {
+            type: "paragraph",
+            text: "The simulation is rendered in real-time using OpenGL. The rendering system supports various visual effects, such as shadows, lighting, and textures. The software also includes a user interface for controlling the simulation parameters and viewing the results.",
+          },
+        ],
+      },
+      {
+        title: "Technical Details",
+        content: [
+          {
+            type: "heading",
+            text: "Implementation",
+          },
+          {
+            type: "bullets",
             items: [
-              { label: "Real World", src: "/projects/teacup-real.mp4", mediaType: "video" },
-              { label: "Model", src: "/projects/teacup-model.mp4", mediaType: "video" },
-              { label: "Position of Rider", src: "/projects/teacup-position.png", mediaType: "image" },
-              { label: "Acceleration of Rider", src: "/projects/teacup-acceleration.png", mediaType: "image" }
+              "C++ was used as the primary programming language due to its performance and control over hardware resources.",
+              "OpenGL was used for real-time rendering of the simulation.",
+              "CMake was used for cross-platform build management.",
             ],
-            description: "This project involved the kinematic analysis and simulation of a teacup ride, modeled as a series of three nested rigid bodies (A, B, and C) undergoing simultaneous relative rotations. By defining angular velocities in a hierarchical fashion\u2014where each body's motion is relative to its parent frame\u2014I successfully modeled the complex propagation of motion from the central turntable to a rider at the periphery. I implemented recursive algorithms to calculate the absolute position, velocity, and acceleration of the rider (Point D) by accounting for centripetal and Coriolis effects across multiple reference frames. The simulation was executed through a custom numerical integration loop, updating orientation matrices and position vectors over a 15-second trajectory. To simulate the physical experience of a passenger, I performed frame transformations to map the inertial accelerations back into the rider's body-fixed reference frame. By plotting the c\u2081 and c\u2083 acceleration components, I was able to simulate exactly what an onboard accelerometer (or the rider's own body) would feel." undergoing simultaneous relative rotations. By defining angular velocities in a hierarchical fashion—where each body’s motion is relative to its parent frame—I successfully modeled the complex propagation of motion from the central turntable to a rider at the periphery. I implemented recursive algorithms to calculate the absolute position, velocity, and acceleration of the rider (Point D) by accounting for centripetal and Coriolis effects across multiple reference frames.The simulation was executed through a custom numerical integration loop, updating orientation matrices and position vectors over a 15-second trajectory. To simulate the physical experience of a passenger, I performed frame transformations to map the inertial accelerations back into the rider’s body-fixed reference frame. By plotting the $c_1$ and $c_3$ acceleration components, I was able to simulate exactly what an onboard accelerometer (or the rider's own body) would feel."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: 3,
-    title: "Remote Controlled Robot",
-    category: "Robotics",
-    image: "/projects/rc-robot-full.jpg",
-    year: "August 2024 - December 2024",
-    role: "Team Lead",
-    summary: "Designed and manufactured a 40+ part remote-controlled robot to pick up a flag and drop it into a mug, earning maximum points in the end-of-semester competition.",
-    tech: ["SolidWorks", "GD&T", "3D Printing", "Waterjetting", "Machining"],
-    sections: [
-      {
-        title: "Goal",
-        content: [
-          { type: "paragraph", text: "Create a remote-controlled robot capable of picking up a flag and dropping it into a mug. The robot was designed to complete three functional requirements with a focus on maximizing points in the end-of-semester competition." }
-        ]
-      },
-      {
-        title: "What?",
-        content: [
-          { type: "paragraph", text: "Designed and manufactured a 40+ part robot to complete three functional requirements with a focus on maximizing points in the end-of-semester competition. This robot had three distinct subsystems:" },
-          { type: "image", src: "/projects/rc-robot-subsystems.png", alt: "Diagram showing the three subsystems: Clamp, Lead Screw, and Drivetrain", caption: "The three distinct subsystems of the robot" },
-          { type: "heading", text: "Clamp Subsystem" },
-          { type: "paragraph", text: "The clamp subsystem securely picked up a flag by using a motor to rotate a 3D-printed piece that fitted a magnet to another magnet on the other side of the flag." },
-          { type: "heading", text: "Lead Screw Subsystem" },
-          { type: "paragraph", text: "The lead screw subsystem elevated and lowered the clamp using a planetary gearbox, a lead screw attached to the gearbox with a spring pin, and three guiding rods. A lead screw mechanism was chosen for its \"self-locking\" capabilities. The platform holding the clamping mechanism wouldn't fall down on its own because of the leadscrew." },
-          { type: "heading", text: "Drivetrain Subsystem" },
-          { type: "paragraph", text: "The drivetrain subsystem used a double gearbox, two front wheels, and a caster wheel. A caster wheel was chosen instead of two back wheels because it allowed for spinning in place, which was a major advantage on the playing field." }
-        ]
-      },
-      {
-        title: "Final Product",
-        content: [
-          { type: "bullets", items: [
-            "Produced 3D CAD Models and detailed engineering drawings for assembly using SolidWorks",
-            "Utilized 3D Printing, Waterjetting, and Conventional Machining in order to manufacture the robot"
-          ]},
-          { 
-            type: "mediaShowcase", 
-            title: "Robot Build", 
+          },
+          {
+            type: "heading",
+            text: "Physics Engine",
+          },
+          {
+            type: "bullets",
             items: [
-              { label: "CAD Model", src: "/projects/rc-robot-cad.png", mediaType: "image" },
-              { label: "Full Robot View", src: "/projects/rc-robot-full.jpg", mediaType: "image" },
-              { label: "Clamp Open", src: "/projects/rc-robot-clamp-open.jpg", mediaType: "image" },
-              { label: "Clamp Closed", src: "/projects/rc-robot-clamp-closed.jpg", mediaType: "image" }
+              "Verlet integration for time integration.",
+              "Support for revolute, prismatic, and spherical joints.",
+              "Constraint-based dynamics for joint constraints.",
             ],
-            description: "The robot features a custom-designed clamp mechanism for reliably grasping and releasing the flag."
-          }
-        ]
+          },
+          {
+            type: "heading",
+            text: "Collision Detection",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Bounding Volume Hierarchy (BVH) for broad-phase collision detection.",
+              "Gilbert-Johnson-Keerthi (GJK) algorithm for narrow-phase collision detection.",
+            ],
+          },
+        ],
       },
       {
-        title: "Results",
+        title: "Challenges and Solutions",
         content: [
-          { type: "paragraph", text: "The robot demonstrated exceptional reliability, completing all of its tasks in the end-of-semester competition. If I could change one thing about this design, I would add bearings on the platform that has the clamping mechanism. This would ensure that the platform remained level the entire time and didn't slant (as you can see in the photos above). " }
-        ]
-      }
-    ]
+          {
+            type: "heading",
+            text: "Challenge: Real-Time Performance",
+          },
+          {
+            type: "paragraph",
+            text: "Simulating a large number of rigid bodies and joints in real-time required careful optimization of the code. The physics engine and collision detection algorithms were optimized to reduce the computational cost.",
+          },
+          {
+            type: "heading",
+            text: "Solution",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Optimized data structures for storing rigid bodies and joints.",
+              "Parallelization of the physics engine using multi-threading.",
+              "Use of SIMD instructions for vector operations.",
+            ],
+          },
+          {
+            type: "heading",
+            text: "Challenge: Stability",
+          },
+          {
+            type: "paragraph",
+            text: "The simulation had to be stable, meaning that it should not explode or exhibit other undesirable behaviors. This required careful tuning of the simulation parameters and the use of appropriate numerical methods.",
+          },
+          {
+            type: "heading",
+            text: "Solution",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Use of Verlet integration for time integration.",
+              "Constraint-based dynamics for joint constraints.",
+              "Appropriate choice of simulation parameters.",
+            ],
+          },
+        ],
+      },
+      {
+        title: "Applications",
+        content: [
+          {
+            type: "paragraph",
+            text: "The software can be used for a variety of applications, such as:",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Robotics",
+              "Game development",
+              "Engineering simulations",
+            ],
+          },
+          {
+            type: "image",
+            src: "img/multibody/application.png",
+            alt: "Robotics Simulation",
+            caption: "Simulation of a robotic arm.",
+          },
+        ],
+      },
+      {
+        title: "Future Work",
+        content: [
+          {
+            type: "paragraph",
+            text: "Future work could include:",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Adding support for soft bodies.",
+              "Improving the collision detection system.",
+              "Adding support for more types of joints.",
+              "Adding a scripting interface.",
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
-    id: 4,
-    title: "4-Bar Linkage",
-    category: "Mechanical Design",
-    image: "/projects/4bar-linkage-board.png",
-    year: "January 2025 - May 2025",
-    role: "Team Project",
-    summary: "Designed, analyzed, manufactured, and tested a 4-bar linkage mechanism with optimized transmission angles and PID-controlled motor.",
-    tech: ["SolidWorks", "ADAMS", "Stress Analysis", "PID Control", "Waterjetting", "Conventional Machining"],
+    slug: "generative-ai-assisted-game-design",
+    title: "Generative AI Assisted Game Design",
+    category: "Research",
+    role: "Concept, Code, Simulations",
+    year: "2024",
+    tech: ["Python", "AI", "Machine Learning", "Game Design"],
+    image: "img/ai-game-design/featured.png",
+    summary:
+      "A novel approach to game design using generative AI to create game levels, characters, and storylines.",
     sections: [
       {
-        title: "Context",
+        title: "Concept",
         content: [
-          { type: "paragraph", text: "Our team was tasked with creating a mechatronic system capable of detecting zombies (targets) and firing an LED at the corresponding photosensor. The goal was to prioritize the furthest targets using proximity sensors and navigate a 4-bar linkage across the playing field with high speed and precision." },
-        ]
-      },      
-      {
-        title: "Design and Geometry Optimization",
-        content: [
-          { type: "paragraph", text: "We selected a design that optimized link lengths for a balance of weight and transmission angle. The final linkage consists of aluminum links (Input: 7.17\", Follower: 7.02\") and a lightweight 3D-printed PLA flashlight mount. The entire moving mechanism weighs only 160 grams to minimize inertia." },
-          { type: "paragraph", text: "A transmission ratio of 1.33 was chosen after comparing inertia matching and light beam resolution requirements. This ratio ensures the motor could resolve 0.1875° per encoder count, providing the necessary precision to hit targets. We utilized a gear-driven system over belts or chains to maximize efficiency and eliminate slippage." },
-          { type: "image", src: "/projects/linkage-geometry.png", alt: "Linkage geometry in target positions", caption: "Linkage geometry and ground pivot locations relative to the game board." },
-          { type: "image", src: "/projects/transmission-view.png", alt: "Gear transmission detail view", caption: "Detail view of the 4:3 gear transmission and spring pin coupling." }
-        ]
+          {
+            type: "paragraph",
+            text: "The project explores the use of generative AI to assist in the game design process. By using AI to generate game levels, characters, and storylines, I was able to create games that would be impossible to produce through traditional methods.",
+          },
+          {
+            type: "image",
+            src: "img/ai-game-design/concept.png",
+            alt: "AI generated game level",
+            caption: "AI generated game level",
+          },
+          {
+            type: "paragraph",
+            text: "The goal was to push the boundaries of what is possible in game design, and to explore the potential of AI as a tool for creativity. The project also raises questions about the role of the designer in the age of AI, and whether AI can be considered a true creative partner.",
+          },
+        ],
       },
       {
-        title: "Dynamic Analysis (ADAMS)",
+        title: "Process",
         content: [
-          { type: "paragraph", text: "The design was exported to MSC ADAMS to simulate a 97.53-degree sweep. By iterating through acceleration magnitudes, we optimized the sweep time to 0.48 seconds. This timing kept the peak power consumption at 0.875 kW, safely within the motor's operating limits while providing the dynamic response needed for high-speed gameplay." },
-          { type: "image", src: "/projects/adams-simulation.png", alt: "ADAMS model of linkage", caption: "ADAMS model used for power and torque verification." },
-          { type: "image", src: "/projects/performance-graphs.png", alt: "Power and Torque graphs", caption: "Simulated Power (Peak ___ kW) and Torque vs. Time for a ____s sweep." }
-        ]
+          {
+            type: "paragraph",
+            text: "The process began with training AI models to generate game levels, characters, and storylines. I used a variety of AI models, including Generative Adversarial Networks (GANs) and Transformers, to create a wide range of game assets. These were then assembled into playable games using the Unity game engine.",
+          },
+          {
+            type: "image",
+            src: "img/ai-game-design/process.png",
+            alt: "AI generated game character",
+            caption: "AI generated game character",
+          },
+          {
+            type: "paragraph",
+            text: "The games were then tested and refined based on player feedback. The final step was to release the games to the public.",
+          },
+        ],
       },
       {
-        title: "Stress and Failure Analysis",
+        title: "Outcome",
         content: [
-          { type: "paragraph", text: "We performed failure analysis on critical torque transfer points. While the gear teeth showed a healthy safety factor of >3.0, the motor shaft spring pin was identified as a weak point with a safety factor of 1.16. Real-world testing confirmed this, as the pin eventually failed due to fatigue under cyclic loading. This was a key learning point that led us to recommend hardened steel pins for future iterations." },
-          { type: "image", src: "/projects/stress-calc.png", alt: "Stress analysis on spring pin", caption: " Shear stress analysis on the 1050 steel spring pin." }
-        ]
+          {
+            type: "image",
+            src: "img/ai-game-design/outcome.png",
+            alt: "Final result",
+            caption: "Final result",
+          },
+          {
+            type: "paragraph",
+            text: "The final result is a series of unique and innovative games that showcase the potential of AI as a tool for game design. The project was featured in a number of online publications, and was also exhibited at a game development conference.",
+          },
+        ],
       },
-      {
-        title: "Manufacturing",
-        content: [
-          { type: "paragraph", text: "Detailed engineering drawings were created for each part before they were manufactured. Waterjets, mills, lathes, and 3-D printers were all used in order to manufacture different parts which gave great exposure to different types of manufacturing methods." },
-          { type: "image", src: "/projects/FollowerDrawing.png", alt: "Manufacturing drawing for follower link", caption: "Manufacturing drawing for follower link" },
-          { type: "image", src: "/projects/FollowerManufacturingPlan.png", alt: "Manufacturing plan", caption: "Manufacturing plan for follower link" },
-          { type: "paragraph", text: "A video showing how all of the components connect was also made and shown below."},
-          { type: "mediaShowcase", title: "Assembly Video", items: [{ label: "Assembly", src: "/projects/Final.mp4", mediaType: "video" }] }
-        ]
-      },
-      {
-        title: "Programming and Results",
-        content: [
-          { type: "paragraph", text: "Control was implemented using an Arduino-based PID loop combined with PWM. This allowed the system to correct for overshoot caused by the linkage's inertia. The system successfully used proximity sensor data to calculate target urgency, providing a reliable closed-loop response to real-time target movement." },
-          { type: "mediaShowcase", title: "System in Operation", items: [
-            { label: "Hardware Demo", src: "/projects/4bar-linkage-real.mov", mediaType: "video" }
-          ], description: "The final system successfully identifying and targeting the furthest zombie and moving flashlight to point at the corresponding photosensor." }
-        ]
-      }
-    ]
+    ],
   },
-  {
-    id: 5,
-    title: "Lane Keeping Assist System on Highways",
-    category: "Modeling",
-    image: "/projects/lka.png",
-    year: "January 2026 - Present",
-    role: "Individual Project",
-    summary: "Using a dynamic bicycle model to represent vehicle handling. Creating a control system to minimize  lateral error (distance from lane center) and error yaw angle deviation while maintaining stability.",
-    tech: ["MatLab", "Simulink", "Control Systems", "Vehicle Modeling"],
-    sections: [
-      {
-        title: "Coming Soon",
-        content: [
-          { type: "paragraph", text: "As of February 2026, I'm currently working on this project and will update this page as progress is being made." },
-        ]
-      }
-    ]
-  },
-  {
-    id: 6,
-    title: "Mounting Solutions for Dopplers (Senior capstone project) ",
-    category: "Design",
-    image: "/projects/Doppler.jpg",
-    year: "January 2026 - Present",
-    role: "Team Project",
-    summary: "Mounting solution for Doppler to birthing patient for low-resource clinical settings.",
-    tech: ["Design Ethnography", "Prototyping", "3-D printing"],
-    sections: [
-      {
-        title: "Research Focus",
-        content: [
-          { type: "paragraph", text: "For my senior capstone project, I'm creating a mounting solution that attaches Dopplers to birthing patients for reliable, extended monitoring. It is meant for low-resource clinical settings. As of February 2026, I'm currently working on the project and will update this page as progress is being made." },
-        ]
-      }
-    ]
-  }
 ];
 
-export const EXPERIENCE = [
+export const allProjects: Project[] = [
+  ...featuredProjects,
   {
-    company: "University of Michigan",
-    role: "Lead Instructional Aide - Dynamics and Vibrations",
-    period: "Aug 2025 - Present",
-    location: "Ann Arbor, MI",
-    desc: "Creating homework solutions and delivering course content to support 100+ students in Dynamics and Vibrations. Leading problem-solving sessions to enhance student learning. Weekly time commitment of 10 hours."
+    slug: "fluid-simulation",
+    title: "Real-time Fluid Simulation on GPU",
+    category: "Research",
+    role: "Concept, Code, Simulations",
+    year: "2021",
+    tech: ["C++", "OpenGL", "CUDA"],
+    image: "img/fluid/featured.png",
+    summary:
+      "A real-time fluid simulation software, capable of simulating millions of particles. Includes a custom SPH physics engine, collision detection, and OpenGL rendering.",
+    sections: [
+      {
+        title: "Overview",
+        content: [
+          {
+            type: "paragraph",
+            text: "This project involved the development of a real-time fluid simulation software using C++ and OpenGL. The primary goal was to create a robust and efficient simulation environment capable of handling a large number of particles. The software features a custom SPH physics engine, collision detection algorithms, and real-time rendering capabilities.",
+          },
+          {
+            type: "image",
+            src: "img/fluid/overview.png",
+            alt: "Fluid Simulation",
+            caption: "Simulation of a complex fluid system.",
+          },
+        ],
+      },
+      {
+        title: "Key Features",
+        content: [
+          {
+            type: "heading",
+            text: "Custom SPH Physics Engine",
+          },
+          {
+            type: "paragraph",
+            text: "The physics engine was built from scratch to provide accurate and stable simulations. It uses the Smoothed-Particle Hydrodynamics (SPH) method to simulate the behavior of fluids. The engine supports various physical effects, such as viscosity, surface tension, and gravity.",
+          },
+          {
+            type: "heading",
+            text: "Collision Detection",
+          },
+          {
+            type: "paragraph",
+            text: "An efficient collision detection system was implemented to handle interactions between fluid particles and solid objects. The system uses a combination of bounding volume hierarchies (BVH) and signed distance fields (SDF) to quickly identify and resolve collisions.",
+          },
+          {
+            type: "heading",
+            text: "OpenGL Rendering",
+          },
+          {
+            type: "paragraph",
+            text: "The simulation is rendered in real-time using OpenGL. The rendering system supports various visual effects, such as shadows, lighting, and reflections. The software also includes a user interface for controlling the simulation parameters and viewing the results.",
+          },
+        ],
+      },
+      {
+        title: "Technical Details",
+        content: [
+          {
+            type: "heading",
+            text: "Implementation",
+          },
+          {
+            type: "bullets",
+            items: [
+              "C++ was used as the primary programming language due to its performance and control over hardware resources.",
+              "OpenGL was used for real-time rendering of the simulation.",
+              "CUDA was used for parallelizing the physics engine on the GPU.",
+            ],
+          },
+          {
+            type: "heading",
+            text: "Physics Engine",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Smoothed-Particle Hydrodynamics (SPH) method for simulating fluids.",
+              "Support for viscosity, surface tension, and gravity.",
+              "Verlet integration for time integration.",
+            ],
+          },
+          {
+            type: "heading",
+            text: "Collision Detection",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Bounding Volume Hierarchy (BVH) for broad-phase collision detection.",
+              "Signed Distance Fields (SDF) for narrow-phase collision detection.",
+            ],
+          },
+        ],
+      },
+      {
+        title: "Challenges and Solutions",
+        content: [
+          {
+            type: "heading",
+            text: "Challenge: Real-Time Performance",
+          },
+          {
+            type: "paragraph",
+            text: "Simulating a large number of particles in real-time required careful optimization of the code. The physics engine and collision detection algorithms were optimized to reduce the computational cost.",
+          },
+          {
+            type: "heading",
+            text: "Solution",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Parallelization of the physics engine using CUDA.",
+              "Optimized data structures for storing particles and collision objects.",
+              "Use of SIMD instructions for vector operations.",
+            ],
+          },
+          {
+            type: "heading",
+            text: "Challenge: Stability",
+          },
+          {
+            type: "paragraph",
+            text: "The simulation had to be stable, meaning that it should not explode or exhibit other undesirable behaviors. This required careful tuning of the simulation parameters and the use of appropriate numerical methods.",
+          },
+          {
+            type: "heading",
+            text: "Solution",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Use of Verlet integration for time integration.",
+              "Appropriate choice of simulation parameters.",
+              "Use of artificial viscosity to damp oscillations.",
+            ],
+          },
+        ],
+      },
+      {
+        title: "Applications",
+        content: [
+          {
+            type: "paragraph",
+            text: "The software can be used for a variety of applications, such as:",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Visual effects in movies and games",
+              "Engineering simulations",
+              "Scientific research",
+            ],
+          },
+          {
+            type: "image",
+            src: "img/fluid/application.png",
+            alt: "Visual Effects Simulation",
+            caption: "Simulation of a water splash.",
+          },
+        ],
+      },
+      {
+        title: "Future Work",
+        content: [
+          {
+            type: "paragraph",
+            text: "Future work could include:",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Adding support for more complex fluid behaviors, such as turbulence and multiphase flow.",
+              "Improving the collision detection system to handle more complex geometries.",
+              "Adding a scripting interface for controlling the simulation.",
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
-    company: "Boston Scientific",
-    role: "Manufacturing Engineering Intern",
-    period: "May 2025 - Aug 2025",
-    location: "Maple Grove, MN",
-    desc: "Generated $162k+ in projected annual savings. Designed and executed experiments to validate new equipment. Held line ownership of a tri-layer polymer extrusion line."
+    slug: "deformable-object-simulation",
+    title: "Real-time Deformable Object Simulation",
+    category: "Research",
+    role: "Concept, Code, Simulations",
+    year: "2020",
+    tech: ["C++", "OpenGL"],
+    image: "img/deformable/featured.png",
+    summary:
+      "A real-time deformable object simulation software, capable of simulating thousands of triangles. Includes a custom FEM physics engine, collision detection, and OpenGL rendering.",
+    sections: [
+      {
+        title: "Overview",
+        content: [
+          {
+            type: "paragraph",
+            text: "This project involved the development of a real-time deformable object simulation software using C++ and OpenGL. The primary goal was to create a robust and efficient simulation environment capable of handling a large number of triangles. The software features a custom FEM physics engine, collision detection algorithms, and real-time rendering capabilities.",
+          },
+          {
+            type: "image",
+            src: "img/deformable/overview.png",
+            alt: "Deformable Object Simulation",
+            caption: "Simulation of a complex deformable object.",
+          },
+        ],
+      },
+      {
+        title: "Key Features",
+        content: [
+          {
+            type: "heading",
+            text: "Custom FEM Physics Engine",
+          },
+          {
+            type: "paragraph",
+            text: "The physics engine was built from scratch to provide accurate and stable simulations. It uses the Finite Element Method (FEM) to simulate the behavior of deformable objects. The engine supports various material models, such as linear elasticity, corotational elasticity, and plasticity.",
+          },
+          {
+            type: "heading",
+            text: "Collision Detection",
+          },
+          {
+            type: "paragraph",
+            text: "An efficient collision detection system was implemented to handle interactions between deformable objects and solid objects. The system uses a combination of bounding volume hierarchies (BVH) and signed distance fields (SDF) to quickly identify and resolve collisions.",
+          },
+          {
+            type: "heading",
+            text: "OpenGL Rendering",
+          },
+          {
+            type: "paragraph",
+            text: "The simulation is rendered in real-time using OpenGL. The rendering system supports various visual effects, such as shadows, lighting, and textures. The software also includes a user interface for controlling the simulation parameters and viewing the results.",
+          },
+        ],
+      },
+      {
+        title: "Technical Details",
+        content: [
+          {
+            type: "heading",
+            text: "Implementation",
+          },
+          {
+            type: "bullets",
+            items: [
+              "C++ was used as the primary programming language due to its performance and control over hardware resources.",
+              "OpenGL was used for real-time rendering of the simulation.",
+            ],
+          },
+          {
+            type: "heading",
+            text: "Physics Engine",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Finite Element Method (FEM) for simulating deformable objects.",
+              "Support for linear elasticity, corotational elasticity, and plasticity.",
+              "Implicit integration for time integration.",
+            ],
+          },
+          {
+            type: "heading",
+            text: "Collision Detection",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Bounding Volume Hierarchy (BVH) for broad-phase collision detection.",
+              "Signed Distance Fields (SDF) for narrow-phase collision detection.",
+            ],
+          },
+        ],
+      },
+      {
+        title: "Challenges and Solutions",
+        content: [
+          {
+            type: "heading",
+            text: "Challenge: Real-Time Performance",
+          },
+          {
+            type: "paragraph",
+            text: "Simulating a large number of triangles in real-time required careful optimization of the code. The physics engine and collision detection algorithms were optimized to reduce the computational cost.",
+          },
+          {
+            type: "heading",
+            text: "Solution",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Optimized data structures for storing triangles and collision objects.",
+              "Use of SIMD instructions for vector operations.",
+              "Use of iterative solvers for solving the linear system of equations.",
+            ],
+          },
+          {
+            type: "heading",
+            text: "Challenge: Stability",
+          },
+          {
+            type: "paragraph",
+            text: "The simulation had to be stable, meaning that it should not explode or exhibit other undesirable behaviors. This required careful tuning of the simulation parameters and the use of appropriate numerical methods.",
+          },
+          {
+            type: "heading",
+            text: "Solution",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Use of implicit integration for time integration.",
+              "Appropriate choice of simulation parameters.",
+              "Use of damping to dissipate energy.",
+            ],
+          },
+        ],
+      },
+      {
+        title: "Applications",
+        content: [
+          {
+            type: "paragraph",
+            text: "The software can be used for a variety of applications, such as:",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Visual effects in movies and games",
+              "Engineering simulations",
+              "Surgical simulations",
+            ],
+          },
+          {
+            type: "image",
+            src: "img/deformable/application.png",
+            alt: "Surgical Simulation",
+            caption: "Simulation of a surgical procedure.",
+          },
+        ],
+      },
+      {
+        title: "Future Work",
+        content: [
+          {
+            type: "paragraph",
+            text: "Future work could include:",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Adding support for more complex material models, such as hyperelasticity and fracture.",
+              "Improving the collision detection system to handle self-collisions.",
+              "Adding a scripting interface for controlling the simulation.",
+            ],
+          },
+        ],
+      },
+    ],
   },
-  {
-    company: "Naval Engineering Education Consortium",
-    role: "Undergraduate Researcher",
-    period: "Feb 2024 - Aug 2025",
-    location: "Ann Arbor, MI",
-    desc: "Directed experiments with industry-grade equipment to model boat vibrations. Created LabVIEW/MATLAB programs for data acquisition to identify vibration patterns."
-  }
-];
-
-export const EDUCATION = [
-  {
-    school: "University of Michigan",
-    degree: "B.S. Mechanical Engineering",
-    details: ["GPA: 3.95 / 4.00", "Aug 2023 - May 2026"],
-    coursework: ["Analytical and Computational Dynamics","Vehicle Control Systems","Automatic Control", "Front-End Design"]
-  }
-];
-
-export const SKILLS = [
-  "SolidWorks", "Siemens NX/Teamcenter", "Ansys FEA", "GD&T", 
-  "3D Printing", "Machining (Mill/Lathe)", "MATLAB", "LabVIEW", 
-  "Python", "C++", "QGIS"
 ];
