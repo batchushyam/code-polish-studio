@@ -350,7 +350,7 @@ export const EXPERIENCE = [
     role: "Undergraduate Researcher",
     period: "Feb 2024 - Aug 2025",
     location: "Ann Arbor, MI",
-    desc: "Directed experiments with industry-grade equipment to model boat vibrations. Created LabVIEW/MATLAB programs for data acquisition to identify vibration patterns."
+    desc: "Directed an experiment with industry-grade equipment to model boat vibrations. Created LabVIEW/MATLAB programs for data acquisition to identify vibration patterns."
   }
 ];
 
