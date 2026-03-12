@@ -220,7 +220,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
         </motion.div>
       );
 
-    case "sideImage":
+      case "sideImage":
       return (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -244,11 +244,18 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
             )}
           </div>
           <div className="md:w-2/5 flex-shrink-0">
-            <img
-              src={assetUrl(block.src)}
-              alt={block.alt}
-              className="w-full rounded-xl shadow-lg object-contain"
-            />
+            <figure className="w-full m-0">
+              <img
+                src={assetUrl(block.src)}
+                alt={block.alt}
+                className="w-full rounded-xl shadow-lg object-contain"
+              />
+              {block.caption && (
+                <figcaption className="text-sm text-muted-foreground mt-3 text-center italic">
+                  {block.caption}
+                </figcaption>
+              )}
+            </figure>
           </div>
         </motion.div>
       );
@@ -256,7 +263,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
     default:
       return null;
   }
-};
+};  
 
 export const ProjectPage = ({ project, onBack }: ProjectPageProps) => {
   return (
