@@ -250,18 +250,43 @@ export const PROJECTS: Project[] = [
       {
         title: "Design and Geometry Optimization",
         content: [
-          { type: "paragraph", text: "We selected a design that optimized link lengths for a balance of weight and transmission angle. The final linkage consists of aluminum links (Input: 7.17\", Follower: 7.02\") and a lightweight 3D-printed PLA flashlight mount. The entire moving mechanism weighs only 160 grams to minimize inertia." },
-          { type: "paragraph", text: "A transmission ratio of 1.33 was chosen after comparing inertia matching and light beam resolution requirements. This ratio ensures the motor could resolve 0.1875\u00B0 per encoder count, providing the necessary precision to hit targets. We utilized a gear-driven system over belts or chains to maximize efficiency and eliminate slippage." },
-          { type: "image", src: "/projects/linkage-geometry.png", alt: "Linkage geometry in target positions", caption: "Linkage geometry and ground pivot locations relative to the game board." },
-          { type: "image", src: "/projects/transmission-view.png", alt: "Gear transmission detail view", caption: "Detail view of the 4:3 gear transmission and spring pin coupling." }
+          { 
+            type: "sideImage", 
+            src: "/projects/lengths_of_coupler.png", 
+            alt: "proof of concept breadboard", 
+            caption: "Input, Follower, and Coupler linkage lengths", 
+            paragraphs: [
+              "We selected a design that optimized link lengths for a balance of weight and transmission angle. The final linkage consists of aluminum links (Input: 7.17\", Follower: 7.02\") and a lightweight 3D-printed PLA flashlight mount. The entire moving mechanism weighs only 160 grams to minimize inertia.",
+              "A transmission ratio of 1.33 was chosen after comparing inertia matching and light beam resolution requirements. This ratio ensures the motor could resolve 0.1875\u00B0 per encoder count, providing the necessary precision to hit targets. We utilized a gear-driven system over belts or chains to maximize efficiency and eliminate slippage."
+            ]
+          },
+          { type: "gallery", images: [
+            { src: "/projects/transmission.png", alt: "Isometric view of Transmission", caption: "Isometric View of 4:3 gear transmission" },
+            { src: "/projects/close_up_spring_pin.png", alt: "Close up of transmission", caption: "Detailed view of gears interacting and spring pin coupling" },
+          ]},
+          { type: "paragraph", text: "There were four different targets that our four-bar linkage had to hit as seen in the figures below which show " },
+
+          { type: "gallery", images: [
+            { src: "/projects/firstpositionlinkage.png", alt: "First position of linkage", caption: "Linkage pointing at the first target" },
+            { src: "/projects/secondpositionlinkage.png", alt: "Second position of linkage", caption: "Linkage pointing at the second target" },
+            { src: "/projects/thirdpositionlinkage.png", alt: "Third position of linkage", caption: "Linkage pointing at the third target" },
+            { src: "/projects/fourthpositionlinkage.png", alt: "Fourth position of linkage", caption: "Linkage pointing at the fourth target (has to point at mirror due to barrier around sensor)" },
+          ]},
         ]
       },
       {
         title: "Dynamic Analysis (ADAMS)",
         content: [
-          { type: "paragraph", text: "The design was exported to MSC ADAMS to simulate a 97.53-degree sweep. By iterating through acceleration magnitudes, we optimized the sweep time to 0.48 seconds. This timing kept the peak power consumption at 0.875 kW, safely within the motor's operating limits while providing the dynamic response needed for high-speed gameplay." },
-          { type: "image", src: "/projects/adams-simulation.png", alt: "ADAMS model of linkage", caption: "ADAMS model used for power and torque verification." },
-          { type: "image", src: "/projects/performance-graphs.png", alt: "Power and Torque graphs", caption: "Simulated Power (Peak ___ kW) and Torque vs. Time for a ____s sweep." }
+          { type: "paragraph", text: "To get from the first position to the fourth position, the angle swept by the input link is equal to 97.53 degrees. The design in SolidWorks was exported to MSC ADAMS to simulate this 97.53-degree sweep. By iterating through acceleration magnitudes, we optimized the sweep time to 0.48 seconds. This timing kept the peak power consumption at 0.875 kW, safely within the motor's operating limits while providing the dynamic response needed for high-speed gameplay. Shown above in the design section was the final design chosen, but multiple different designs that emphasized different things (input length, transmission angle, sweep angle) were put through ADAMS in order to find the most optimal design. The ADAMS simulations helped our team compare different designs. Below are four graphs that were obtained from the design and when the sweep time is 0.48 seconds and each show a different value vs. time." },
+          { type: "gallery", images: [
+            { src: "/projects/anglepositionadams.png", alt: " Angular Position vs. Time of Input Link", caption: " Angular Position vs. Time of Input Link" },
+            { src: "/projects/angularvelocityadams.png", alt: "Angular Velocity vs. Time of Input Link ", caption: "Angular Velocity vs. Time of Input Link" },
+            { src: "/projects/poweradams.png", alt: "Power versus Time of Simulation", caption: "Power versus Time of Simulation" },
+            { src: "/projects/torqueadams.png", alt: "Torque vs Time of Simulation", caption: "Torque vs Time of Simulation" },
+            
+          ]},
+          { type: "paragraph", text: "The main value that was compared in ADAMS from different linkage setups was sweep time while keeping the peak power delivered from the motor under 1 kW. " },
+
         ]
       },
       {
@@ -277,7 +302,7 @@ export const PROJECTS: Project[] = [
           { type: "paragraph", text: "Detailed engineering drawings were created for each part before they were manufactured. Waterjets, mills, lathes, and 3-D printers were all used in order to manufacture different parts which gave great exposure to different types of manufacturing methods." },
           { type: "image", src: "/projects/FollowerDrawing.png", alt: "Manufacturing drawing for follower link", caption: "Manufacturing drawing for follower link" },
           { type: "image", src: "/projects/FollowerManufacturingPlan.png", alt: "Manufacturing plan", caption: "Manufacturing plan for follower link" },
-          { type: "paragraph", text: "A video showing how all of the components connect was also made and shown below."},
+          { type: "paragraph", text: "A video showing how all of the components integrate together was also made and shown below."},
           { type: "mediaShowcase", title: "Assembly Video", items: [{ label: "Assembly", src: "/projects/Final.mp4", mediaType: "video" }] }
         ]
       },
