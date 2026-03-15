@@ -311,9 +311,7 @@ export const PROJECTS: Project[] = [
         title: "Programming and Results",
         content: [
           { type: "paragraph", text: "Control was implemented using an Arduino-based PID loop combined with PWM. This allowed the system to correct for overshoot caused by the linkage's inertia. The system successfully used proximity sensor data to calculate target urgency, providing a reliable closed-loop response to real-time target movement." },
-          { type: "mediaShowcase", title: "System in Operation", items: [
-            { label: "Hardware Demo", src: "/projects/4bar-linkage-real.mov", mediaType: "video" }
-          ], description: "The final system successfully identifying and targeting the furthest zombie and moving flashlight to point at the corresponding photosensor." }
+          { type: "video", src: "/projects/4bar-linkage-real.mov", caption: "The final system successfully identifying and targeting the furthest zombie and moving flashlight to point at the corresponding photosensor." }
         ]
       }
     ]
