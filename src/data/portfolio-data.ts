@@ -168,7 +168,7 @@ export const PROJECTS: Project[] = [
     id: 3,
     title: "Remote Controlled Robot",
     category: "Robotics",
-    image: "/projects/rc-robot-full.jpg",
+    image: "/projects/rc-robot-subsystems.png",
     year: "August 2024 - December 2024",
     role: "Team Lead",
     summary: "Designed and manufactured a 40+ part remote-controlled robot to pick up a flag and drop it into a mug, earning maximum points in the end-of-semester competition.",
