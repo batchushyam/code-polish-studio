@@ -79,7 +79,7 @@ export const Navigation = ({ onScrollTo }: NavigationProps) => {
             ))}
             <a
               href={assetUrl("/Shyam_Batchu_Resume.pdf")}
-              target="_blank"
+              download="Shyam_Batchu_Resume.pdf"
               className="block w-full text-left py-2 text-foreground font-medium"
             >
               Resume
