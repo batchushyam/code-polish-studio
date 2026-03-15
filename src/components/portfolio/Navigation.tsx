@@ -40,7 +40,7 @@ export const Navigation = ({ onScrollTo }: NavigationProps) => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6 }}
             href={assetUrl("/Shyam_Batchu_Resume.pdf")}
-            target="_blank"
+            download="Shyam_Batchu_Resume.pdf"
             className="px-4 py-2 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:bg-primary/90 transition-colors"
           >
             Resume
@@ -79,7 +79,7 @@ export const Navigation = ({ onScrollTo }: NavigationProps) => {
             ))}
             <a
               href={assetUrl("/Shyam_Batchu_Resume.pdf")}
-              target="_blank"
+              download="Shyam_Batchu_Resume.pdf"
               className="block w-full text-left py-2 text-foreground font-medium"
             >
               Resume
