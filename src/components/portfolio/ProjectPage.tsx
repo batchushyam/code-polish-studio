@@ -107,7 +107,7 @@ const ContentBlockRenderer = ({ block, index }: { block: ContentBlock; index: nu
               <img
                 src={assetUrl(img.src)}
                 alt={img.alt}
-                className="w-full rounded-lg shadow-md aspect-video object-cover"
+                className="w-full rounded-lg shadow-md object-contain"
               />
               {img.caption && (
                 <figcaption className="text-sm text-muted-foreground mt-2 text-center italic">
