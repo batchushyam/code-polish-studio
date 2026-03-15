@@ -200,17 +200,13 @@ export const PROJECTS: Project[] = [
             "Produced 3D CAD Models and detailed engineering drawings for assembly using SolidWorks",
             "Utilized 3D Printing, Waterjetting, and Conventional Machining in order to manufacture the robot"
           ]},
-          { 
-            type: "mediaShowcase", 
-            title: "Robot Build", 
-            items: [
-              { label: "CAD Model", src: "/projects/rc-robot-cad.png", mediaType: "image" },
-              { label: "Full Robot View", src: "/projects/rc-robot-full.jpg", mediaType: "image" },
-              { label: "Clamp Open", src: "/projects/rc-robot-clamp-open.jpg", mediaType: "image" },
-              { label: "Clamp Closed", src: "/projects/rc-robot-clamp-closed.jpg", mediaType: "image" }
-            ],
-            description: "The robot features a custom-designed clamp mechanism for reliably grasping and releasing the flag."
-          }
+          { type: "image", src: "/projects/rc-robot-cad.png", alt: "CAD Model", caption: "CAD Model" },
+          { type: "image", src: "/projects/rc-robot-full.jpg", alt: "Full Robot View", caption: "Full Robot View" },
+          { type: "gallery", images: [
+            { src: "/projects/rc-robot-clamp-open.jpg", alt: "Clamp Open", caption: "Clamp Open" },
+            { src: "/projects/rc-robot-clamp-closed.jpg", alt: "Clamp Closed", caption: "Clamp Closed" }
+          ]},
+          { type: "paragraph", text: "The robot features a custom-designed clamp mechanism for reliably grasping and releasing the flag." }
         ]
       },
       {
