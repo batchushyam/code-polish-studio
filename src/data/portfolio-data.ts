@@ -159,8 +159,10 @@ export const PROJECTS: Project[] = [
           { type: "heading", text: "Teacup Ride" },
           { type: "video", src: "/projects/teacup-real.mp4", caption: "Real World Teacup Ride" },
           { type: "video", src: "/projects/teacup-model.mp4", caption: "Teacup Ride Model Simulation" },
-          { type: "image", src: "/projects/teacup-position.png", alt: "Position of Rider", caption: "Position of rider over time" },
-          { type: "image", src: "/projects/teacup-acceleration.png", alt: "Acceleration of Rider", caption: "Acceleration of rider over time" },
+          { type: "gallery", images: [
+            { src: "/projects/teacup-position.png", alt: "Position of Rider", caption: "Position of rider over time" },
+            { src: "/projects/teacup-acceleration.png", alt: "Acceleration of Rider", caption: "Acceleration of rider over time" }
+          ]},
           { type: "paragraph", text: "This project involved the kinematic analysis and simulation of a teacup ride, modeled as a series of three nested rigid bodies (A, B, and C) undergoing simultaneous relative rotations. By defining angular velocities in a hierarchical fashion,where each body's motion is relative to its parent frame, I successfully modeled the propagation of motion from the central turntable to a rider at the end. I implemented recursive algorithms to calculate the absolute position, velocity, and acceleration of the rider (Point D) by accounting for centripetal and Coriolis effects across multiple reference frames. The simulation was executed through a custom numerical integration loop, updating orientation matrices and position vectors over a 15-second trajectory. To simulate the physical experience of a passenger, I performed frame transformations to map the inertial accelerations back into the rider's body-fixed reference frame. By plotting the c\u2081 and c\u2083 acceleration components, I was able to simulate  what an onboard accelerometer (or the rider\u2019s own body) would feel. The different accelerations that the rider feels during the ride is what makes the teacup ride fun, and by mapping it out you can see the impact of what changing the angular velocity or lengths of one of the components will have on the rider's experience." }
         ]
       }
