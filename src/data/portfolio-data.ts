@@ -149,16 +149,20 @@ export const PROJECTS: Project[] = [
             description: "In this project, I created a 7-DOF bipedal robot simulation by developing and implementing diverse kinematic joint classes to handle complex mechanical constraints. I modeled the robot\u2019s mobility using a Floating Base architecture, centered on a Virtual 3-DOF Joint that maps global x, y, and pitch coordinates into the system's generalized state. To achieve realistic locomotion, I integrated two distinct physical joint types: Revolute Joints at the hips to manage angular leg-swing and Translational (Prismatic) Joints for the knees to simulate telescoping leg extensions. By programming these joints within a recursive outward-pass framework, I ensured that the position, velocity, and acceleration of each successive link were accurately propagated through the branched kinematic chain. This modular approach allowed for the seamless translation of high-level trajectory data into coordinated walking and running gaits, demonstrating a deep understanding of how specific joint constraints define robot topology and movement."
           },
           { type: "heading", text: "Hopping Robot" },
-          { type: "image", src: "/projects/hopping-robot-diagram.png", alt: "Model Diagram of Hopping Robot", caption: "Model diagram of the hopping robot" },
+          { type: "gallery", images: [
+            { src: "/projects/hopping-robot-diagram.png", alt: "Model Diagram of Hopping Robot", caption: "Model diagram of the hopping robot" },
+            { src: "/projects/hopping-coordinates.png", alt: "Generalized Coordinates", caption: "Generalized coordinates of the hopping robot" }
+          ]},
           { type: "video", src: "/projects/hopping-aligned.mp4", caption: "Aligned Drop" },
           { type: "video", src: "/projects/hopping-crooked.mp4", caption: "Crooked Drop" },
-          { type: "image", src: "/projects/hopping-coordinates.png", alt: "Generalized Coordinates", caption: "Generalized coordinates of the hopping robot" },
           { type: "paragraph", text: "The robot is modeled as a 5-DOF system using a floating-base approach. To simplify the kinematics of the complex hip joint (which requires both rotation and translation), I implemented a massless pelvis trick. This allows the system to be modeled as a serial chain using standard joint classes: Virtual 3-DOF Joint manages the main body\u2019s x, y, and pitch (\u03B8). Revolute Joint (\u03B3) attaches the body to the pelvis for hip rotation. Translational Joint (\u0394L) attaches the pelvis to the leg for telescoping movement. Parallel Elasticity: A virtual spring force (stiffness k = 800) is applied along the leg extension joint to model the hopping energy storage. Multi-Phase Simulation & Impact Logic: The simulation captures the non-linear transitions between different physical states. Flight Phase (Unconstrained): The robot moves under gravity until a custom event function (footContact) detects the foot crossing the ground threshold (y = 0). Plastic Impact: Upon contact, I calculated the instantaneous change in generalized velocities (q\u0307\u207A) using a discrete impact map. This accounts for the sudden loss of energy and ensures the velocities are consistent with the new ground constraint. Stance Phase (Constrained): The foot is locked to the ground via a 2D constraint Jacobian (J). I utilized the KKT (Augmented Mass Matrix) approach to solve for both the robot\u2019s accelerations and the ground reaction forces (\u03BB). Contact Transition Logic: A critical component of this project was the automated transition back to flight. By monitoring the vertical component of the Lagrange multiplier (\u03BB), the simulation identifies the exact moment the spring force overcomes gravity and the ground pushes the robot back into the air. When \u03BB reaches zero, the footLossOfContact event triggers, reverting the system to unconstrained flight dynamics." },
           { type: "heading", text: "Teacup Ride" },
           { type: "video", src: "/projects/teacup-real.mp4", caption: "Real World Teacup Ride" },
           { type: "video", src: "/projects/teacup-model.mp4", caption: "Teacup Ride Model Simulation" },
-          { type: "image", src: "/projects/teacup-position.png", alt: "Position of Rider", caption: "Position of rider over time" },
-          { type: "image", src: "/projects/teacup-acceleration.png", alt: "Acceleration of Rider", caption: "Acceleration of rider over time" },
+          { type: "gallery", images: [
+            { src: "/projects/teacup-position.png", alt: "Position of Rider", caption: "Position of rider over time" },
+            { src: "/projects/teacup-acceleration.png", alt: "Acceleration of Rider", caption: "Acceleration of rider over time" }
+          ]},
           { type: "paragraph", text: "This project involved the kinematic analysis and simulation of a teacup ride, modeled as a series of three nested rigid bodies (A, B, and C) undergoing simultaneous relative rotations. By defining angular velocities in a hierarchical fashion,where each body's motion is relative to its parent frame, I successfully modeled the propagation of motion from the central turntable to a rider at the end. I implemented recursive algorithms to calculate the absolute position, velocity, and acceleration of the rider (Point D) by accounting for centripetal and Coriolis effects across multiple reference frames. The simulation was executed through a custom numerical integration loop, updating orientation matrices and position vectors over a 15-second trajectory. To simulate the physical experience of a passenger, I performed frame transformations to map the inertial accelerations back into the rider's body-fixed reference frame. By plotting the c\u2081 and c\u2083 acceleration components, I was able to simulate  what an onboard accelerometer (or the rider\u2019s own body) would feel. The different accelerations that the rider feels during the ride is what makes the teacup ride fun, and by mapping it out you can see the impact of what changing the angular velocity or lengths of one of the components will have on the rider's experience." }
         ]
       }
@@ -200,9 +204,9 @@ export const PROJECTS: Project[] = [
             "Produced 3D CAD Models and detailed engineering drawings for assembly using SolidWorks",
             "Utilized 3D Printing, Waterjetting, and Conventional Machining in order to manufacture the robot"
           ]},
-          { type: "image", src: "/projects/rc-robot-cad.png", alt: "CAD Model", caption: "CAD Model" },
-          { type: "image", src: "/projects/rc-robot-full.jpg", alt: "Full Robot View", caption: "Full Robot View" },
           { type: "gallery", images: [
+            { src: "/projects/rc-robot-cad.png", alt: "CAD Model", caption: "CAD Model" },
+            { src: "/projects/rc-robot-full.jpg", alt: "Full Robot View", caption: "Full Robot View" },
             { src: "/projects/rc-robot-clamp-open.jpg", alt: "Clamp Open", caption: "Clamp Open" },
             { src: "/projects/rc-robot-clamp-closed.jpg", alt: "Clamp Closed", caption: "Clamp Closed" }
           ]},
